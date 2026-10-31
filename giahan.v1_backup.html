@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Món Quà Vũ Trụ 3D • Gửi Bé Gia Hân 17/03/2011</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: #000000;
+      color: #f8fafc;
+      overflow: hidden;
+      touch-action: none;
+    }
+    .font-handwriting {
+      font-family: 'Dancing Script', cursive;
+    }
+    .font-serif-display {
+      font-family: 'Playfair Display', serif;
+    }
+    .glass-panel {
+      background: rgba(10, 12, 24, 0.76);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85), 0 0 32px rgba(244, 114, 182, 0.2);
+    }
+    .star-glow {
+      text-shadow: 0 0 16px rgba(255, 255, 255, 0.95), 0 0 34px rgba(244, 114, 182, 0.9), 0 0 65px rgba(56, 189, 248, 0.6);
+    }
+    .gold-glow {
+      text-shadow: 0 0 14px rgba(253, 224, 71, 0.9), 0 0 28px rgba(245, 158, 11, 0.7);
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 18px rgba(244, 114, 182, 0.55); }
+      50% { transform: scale(1.04); box-shadow: 0 0 36px rgba(244, 114, 182, 0.95); }
+    }
+    .btn-glow {
+      animation: pulseGlow 2.4s infinite ease-in-out;
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    .animate-float {
+      animation: floatSlow 3.4s ease-in-out infinite;
+    }
+    @keyframes shimmerBar {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .shimmer-text {
+      background: linear-gradient(90deg, #fbcfe8 0%, #ffffff 50%, #fbcfe8 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerBar 4s linear infinite;
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.3);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(244, 114, 182, 0.4);
+      border-radius: 9999px;
+    }
+
+      /* === iPhone 15 Pro Dynamic Island (Tai Thỏ) === */
+    .dynamic-island {
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 25px rgba(244, 114, 182, 0.22);
+      transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      overflow: hidden;
+      width: min(340px, calc(100vw - 24px));
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .dynamic-island:hover {
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.95), 0 0 32px rgba(244, 114, 182, 0.38);
+      border-color: rgba(244, 114, 182, 0.45);
+      transform: scale(1.02);
+    }
+    .dynamic-island.is-expanded {
+      width: min(420px, calc(100vw - 20px));
+      border-radius: 32px;
+      padding: 14px 16px;
+      cursor: default;
+      background: rgba(12, 12, 16, 0.96);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      transform: none;
+    }
+    .di-compact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      height: 38px;
+      padding: 0 12px 0 10px;
+    }
+    .dynamic-island.is-expanded .di-compact {
+      display: none;
+    }
+    .di-sensor {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #09090b;
+      border: 2px solid #27272a;
+      box-shadow: inset 0 0 3px #000;
+      flex-shrink: 0;
+    }
+    .di-soundwave {
+      display: flex;
+      align-items: center;
+      gap: 2.5px;
+      height: 13px;
+    }
+    .di-soundwave span {
+      width: 2.5px;
+      height: 100%;
+      background: #f472b6;
+      border-radius: 3px;
+      animation: diWave 1.1s ease-in-out infinite alternate;
+    }
+    .di-soundwave span:nth-child(2) { animation-delay: 0.25s; height: 65%; }
+    .di-soundwave span:nth-child(3) { animation-delay: 0.5s; height: 85%; }
+    .di-soundwave span:nth-child(4) { animation-delay: 0.15s; height: 45%; }
+    .di-soundwave.paused span {
+      animation-play-state: paused;
+      opacity: 0.4;
+      transform: scaleY(0.3);
+    }
+    @keyframes diWave {
+      0% { transform: scaleY(0.3); }
+      100% { transform: scaleY(1); }
+    }
+    .di-compact-marquee {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: center;
+    }
+    .di-compact-caption {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #fce7f3;
+      letter-spacing: 0.01em;
+      transition: opacity 0.25s;
+    }
+
+    /* === Phone Rotate Animation for Mobile Landscape Prompt === */
+    @keyframes phoneRotateKeyframe {
+      0%, 20% { transform: rotate(0deg); }
+      45%, 75% { transform: rotate(-90deg); }
+      90%, 100% { transform: rotate(0deg); }
+    }
+    .phone-rotate-anim {
+      animation: phoneRotateKeyframe 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen relative flex flex-col justify-between bg-black overflow-hidden select-none">
+  <!-- MOBILE ORIENTATION PROMPT OVERLAY (Rotate phone to landscape) -->
+  <div id="rotate-device-overlay" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-6 bg-black/95 backdrop-blur-xl text-center select-none transition-opacity duration-500">
+    <!-- Ambient glow -->
+    <div class="w-48 h-48 rounded-full bg-pink-500/20 blur-3xl absolute pointer-events-none"></div>
+    
+    <!-- Animated rotating phone icon -->
+    <div class="relative w-28 h-28 mb-5 flex items-center justify-center">
+      <div class="phone-rotate-anim w-14 h-24 rounded-2xl border-2 border-pink-400 bg-pink-500/15 flex flex-col items-center justify-between p-2 shadow-2xl shadow-pink-500/50">
+        <div class="w-5 h-1 rounded-full bg-pink-300"></div>
+        <div class="text-xl">💖</div>
+        <div class="w-2.5 h-2.5 rounded-full border border-pink-300"></div>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <i data-lucide="refresh-cw" class="w-24 h-24 text-amber-300/35 animate-spin" style="animation-duration: 8s;"></i>
+      </div>
+    </div>
+
+    <!-- Title & badge -->
+    <span class="inline-block px-3.5 py-1 rounded-full bg-pink-500/20 border border-pink-400/40 text-pink-300 text-[11px] font-semibold tracking-wider mb-2.5">
+      TRẢI NGHIỆM ĐỈNH CAO NHẤT ✨
+    </span>
+    <h2 class="text-xl sm:text-2xl font-bold text-white mb-2 leading-snug">
+      Vui Lòng Xoay Ngang Điện Thoại 📱
+    </h2>
+    <p class="text-xs text-slate-300 max-w-xs mb-6 leading-relaxed">
+      Quả cầu 3D, 25 ảnh kỷ niệm và các chùm sao của Bé Gia Hân sẽ hiển thị <strong class="text-pink-300">rộng mở, sắc nét và lung linh nhất</strong> khi để màn hình ngang!
+    </p>
+
+    <!-- Auto-rotate / Fullscreen button -->
+    <div class="flex flex-col gap-2.5 w-full max-w-xs pointer-events-auto">
+      <button id="lock-landscape-btn" class="w-full py-3 px-5 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-amber-500 hover:from-pink-400 hover:to-amber-400 text-white font-bold text-sm shadow-xl flex items-center justify-center gap-2 active:scale-95 transition">
+        <i data-lucide="maximize" class="w-4 h-4"></i>
+        <span>Xoay Ngang Màn Hình Ngay 📲</span>
+      </button>
+
+      <button id="dismiss-rotate-btn" class="w-full py-2 text-xs text-slate-400 hover:text-slate-200 transition">
+        Tiếp tục xem màn hình dọc →
+      </button>
+    </div>
+  </div>
+
+
+  <!-- Interactive 360° 3D Sphere / Particle / Galaxy Canvas -->
+  <canvas id="sky-canvas" class="fixed inset-0 w-full h-full z-0 cursor-grab active:cursor-grabbing"></canvas>
+
+  <!-- INTRO / PASSCODE LOCK OVERLAY -->
+  <div id="intro-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md transition-opacity duration-700">
+    <div class="glass-panel max-w-sm w-full rounded-3xl p-6 text-center relative overflow-hidden border border-pink-400/35 shadow-2xl">
+      <!-- Glow ambient background -->
+      <div class="absolute -top-12 -left-12 w-36 h-36 bg-pink-500/25 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -right-12 w-36 h-36 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="w-16 h-16 rounded-3xl bg-gradient-to-tr from-pink-500 via-rose-500 to-amber-300 mx-auto flex items-center justify-center shadow-lg shadow-pink-500/50 mb-3 animate-float border border-white/20">
+        <i data-lucide="gift" class="w-8 h-8 text-white"></i>
+      </div>
+      <span class="inline-block px-3.5 py-1 rounded-full bg-pink-500/20 border border-pink-400/40 text-pink-200 text-[11px] font-semibold tracking-wider mb-2">
+        MÓN QUÀ 3D DÀNH TẶNG BÉ YÊU • 17/03/2011
+      </span>
+      <h1 class="font-handwriting text-3xl sm:text-4xl font-bold text-white star-glow mb-1">
+        Chào Bé Gia Hân! 💖
+      </h1>
+      <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+        Nhập ngày sinh (<strong class="text-pink-300 font-bold">1703</strong>) hoặc bấm nút dưới để <span class="text-amber-200 font-semibold">tự động trình chiếu toàn bộ món quà vũ trụ 3D</span> nhé!
+      </p>
+
+      <!-- 4-Dot Passcode Display -->
+      <div class="flex items-center justify-center gap-3 my-2.5">
+        <span id="dot-0" class="w-3.5 h-3.5 rounded-full border-2 border-pink-400 transition-all"></span>
+        <span id="dot-1" class="w-3.5 h-3.5 rounded-full border-2 border-pink-400 transition-all"></span>
+        <span id="dot-2" class="w-3.5 h-3.5 rounded-full border-2 border-pink-400 transition-all"></span>
+        <span id="dot-3" class="w-3.5 h-3.5 rounded-full border-2 border-pink-400 transition-all"></span>
+      </div>
+      <p id="pass-hint" class="text-[11px] text-rose-400 min-h-[16px] mb-2 opacity-0 transition">Mật khẩu là 1703 nha Bé Gia Hân ơi 🥰</p>
+
+      <!-- Mini Keypad -->
+      <div class="grid grid-cols-3 gap-2 max-w-[230px] mx-auto mb-4">
+        <button data-num="1" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">1</button>
+        <button data-num="2" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">2</button>
+        <button data-num="3" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">3</button>
+        <button data-num="4" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">4</button>
+        <button data-num="5" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">5</button>
+        <button data-num="6" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">6</button>
+        <button data-num="7" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">7</button>
+        <button data-num="8" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">8</button>
+        <button data-num="9" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">9</button>
+        <button id="pass-clear-btn" class="py-2 rounded-xl bg-white/5 hover:bg-white/15 text-[11px] font-semibold text-pink-200 border border-white/10 transition">Xóa</button>
+        <button data-num="0" class="num-btn py-2 rounded-xl bg-white/10 hover:bg-pink-500/30 active:scale-95 text-white font-bold text-sm border border-white/10 transition">0</button>
+        <button id="pass-del-btn" class="py-2 rounded-xl bg-white/5 hover:bg-white/15 text-pink-200 flex items-center justify-center border border-white/10 transition">
+          <i data-lucide="delete" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- MAIN AUTO-START BUTTON -->
+      <button id="start-sky-btn" class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-amber-500 hover:from-pink-400 hover:to-amber-400 text-white font-bold text-sm shadow-xl btn-glow transition active:scale-95 flex items-center justify-center gap-2">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>✨ Mở Quà & Tự Động Trình Chiếu ✨</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Top HUD removed per user request -->
+
+  <!-- CENTER FLOATING BANNER -->
+  <div id="constellation-title-banner" class="relative z-10 text-center pointer-events-none px-4 mt-12 sm:mt-14 transition-all duration-700">
+    <div id="pisces-badge" class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-black/75 border border-pink-400/30 text-slate-200 text-[11px] mb-1 shadow-lg backdrop-blur-sm">
+      <span id="star-progress" class="text-pink-300 font-semibold">Đã thắp sáng: 0/7 sao</span>
+      <span class="text-white/40">•</span>
+      <span class="text-amber-200">♓ Song Ngư 17/03/2011</span>
+      <span class="text-white/40">•</span>
+      <span id="days-alive-badge" class="text-emerald-300">Đang tỏa sáng</span>
+    </div>
+    <h2 id="main-sky-heading" class="font-handwriting text-2xl sm:text-4xl font-bold text-white star-glow transition-all duration-500">
+      Quả Cầu Kỷ Niệm 3D Của Bé Gia Hân ✨
+    </h2>
+  </div>
+
+  <!-- FLOATING 3D CAMERA CONTROLS (Right Side) -->
+  <div class="fixed right-3 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2 pointer-events-auto">
+    <button id="zoom-in-btn" class="glass-panel w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center text-white hover:bg-white/15 active:scale-90 transition shadow-lg" title="Phóng to 3D">
+      <i data-lucide="zoom-in" class="w-4 h-4"></i>
+    </button>
+    <button id="zoom-out-btn" class="glass-panel w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center text-white hover:bg-white/15 active:scale-90 transition shadow-lg" title="Thu nhỏ 3D">
+      <i data-lucide="zoom-out" class="w-4 h-4"></i>
+    </button>
+    <button id="auto-rotate-btn" class="glass-panel w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center text-emerald-300 hover:bg-white/15 active:scale-90 transition shadow-lg" title="Bật/Tắt tự xoay 3D">
+      <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+    </button>
+    <button id="center-cam-btn" class="glass-panel w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center text-pink-300 hover:bg-white/15 active:scale-90 transition shadow-lg" title="Đặt lại góc nhìn chính diện">
+      <i data-lucide="focus" class="w-4 h-4"></i>
+    </button>
+  </div>
+
+  <!-- Bottom controls moved into iPhone 15 Dynamic Island -->
+
+  <!-- ORIGINAL BOTTOM DOCK (Hidden by default; toggleable via 'Bảng Nút Bấm') -->
+  <div id="bottom-manual-dock" class="fixed bottom-6 inset-x-0 z-40 px-3 sm:px-6 flex justify-center pointer-events-none hidden transition-all duration-500 opacity-0 transform translate-y-4">
+    <div class="glass-panel rounded-3xl p-2.5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pointer-events-auto border border-pink-500/40 shadow-2xl">
+      <button id="intro-countdown-btn" class="px-3.5 py-2 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500 text-white text-xs font-bold shadow flex items-center gap-1.5 active:scale-95 transition" title="Chạy hiệu ứng hạt đếm ngược 3-2-1">
+        <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+        <span>Hiệu Ứng Mở Quà TikTok ✨</span>
+      </button>
+
+      <button id="connect-next-btn" class="px-3 py-2 rounded-2xl bg-white/10 hover:bg-white/20 text-pink-200 text-xs font-semibold border border-white/20 flex items-center gap-1.5 active:scale-95 transition">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+        <span>Nối Sao Tiếp Theo</span>
+      </button>
+
+      <button id="spell-name-btn" class="px-3 py-2 rounded-2xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/25 flex items-center gap-1.5 active:scale-95 transition">
+        <i data-lucide="heart" class="w-3.5 h-3.5 text-pink-400 fill-pink-400"></i>
+        <span id="spell-btn-label">Ghép Chữ: GIA HÂN ♥</span>
+      </button>
+
+      <button id="lantern-btn" class="px-3 py-2 rounded-2xl bg-amber-500/90 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center gap-1.5 active:scale-95 transition">
+        <i data-lucide="flame" class="w-3.5 h-3.5 fill-current"></i>
+        <span>Thả Đèn Trời 🏮</span>
+      </button>
+
+      <button id="firework-btn" class="px-3 py-2 rounded-2xl bg-rose-500/90 hover:bg-rose-400 text-white text-xs font-bold flex items-center gap-1.5 active:scale-95 transition">
+        <i data-lucide="party-popper" class="w-3.5 h-3.5"></i>
+        <span>Pháo Hoa Tim 🎆</span>
+      </button>
+
+      <button id="meteor-shower-btn" class="px-3 py-2 rounded-2xl bg-white/10 hover:bg-white/20 text-amber-200 text-xs font-semibold border border-white/20 flex items-center gap-1.5 active:scale-95 transition">
+        <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-300"></i>
+        <span>Mưa Sao Băng 🌠</span>
+      </button>
+
+      <button id="open-letter-btn" class="px-3 py-2 rounded-2xl bg-pink-500/30 hover:bg-pink-500/45 text-pink-100 text-xs font-bold border border-pink-400/50 flex items-center gap-1.5 active:scale-95 transition">
+        <i data-lucide="mail-heart" class="w-3.5 h-3.5 text-pink-300"></i>
+        <span>Thư Ánh Sao 💌</span>
+      </button>
+
+      <button id="reset-sky-btn" class="px-2.5 py-2 rounded-2xl bg-white/5 hover:bg-white/15 text-slate-300 text-xs font-medium flex items-center gap-1 active:scale-95 transition" title="Làm mới">
+        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+      </button>
+    </div>
+  </div>
+
+    <!-- IPHONE 15 DYNAMIC ISLAND (Tai Thỏ Đảo Động) -->
+  <div id="dynamic-island-container" class="fixed top-2.5 inset-x-0 z-50 flex justify-center pointer-events-none">
+    <div id="dynamic-island" class="dynamic-island pointer-events-auto" onclick="onDynamicIslandMainClick(event)">
+      
+      <!-- COMPACT NOTCH STATE (Always visible idle pill) -->
+      <div id="di-compact" class="di-compact">
+        <!-- Left: Camera sensor dot & sound equalizer -->
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <span class="di-sensor" title="Camera Notch iPhone 15"></span>
+          <div class="di-soundwave" id="di-soundwave">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <!-- Center: Live ticker caption -->
+        <div class="di-compact-marquee px-1">
+          <span id="story-caption-text" class="di-compact-caption">🌟 Đang tự động trình chiếu Vũ Trụ Kỷ Niệm 25 ảnh...</span>
+        </div>
+
+        <!-- Right: Mini status dot & expand icon -->
+        <div class="flex items-center gap-1.5 flex-shrink-0">
+          <span id="di-compact-badge" class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+          <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-white/50"></i>
+        </div>
+      </div>
+
+      <!-- EXPANDED STATE 1: CONTROLS & FUNCTIONS (When user taps Dynamic Island) -->
+      <div id="di-expanded-controls" class="hidden flex-col gap-2.5">
+        <!-- Header row -->
+        <div class="flex items-center justify-between gap-3 pb-2 border-b border-white/10">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-white shadow-md flex-shrink-0 border border-white/20">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </div>
+            <div class="min-w-0">
+              <div class="text-[13px] font-bold text-white flex items-center gap-1.5">
+                <span>Vũ Trụ 3D Bé Gia Hân</span>
+                <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-pink-500/30 text-pink-200 border border-pink-400/30 font-semibold">17/03/2011</span>
+              </div>
+              <div class="text-[10px] text-pink-300/80 font-medium truncate">Đảo Động iPhone 15 Pro • Bấm Để Điều Khiển</div>
+            </div>
+          </div>
+          <button onclick="event.stopPropagation(); collapseDynamicIsland();" class="p-1 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 transition" title="Thu nhỏ">
+            <i data-lucide="chevron-up" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Live caption row in expanded mode -->
+        <div class="bg-black/60 rounded-2xl px-3 py-2 border border-white/10 flex items-center gap-2.5">
+          <span class="w-2 h-2 rounded-full bg-pink-400 animate-ping flex-shrink-0"></span>
+          <span id="di-expanded-caption" class="text-xs text-pink-100 font-medium leading-relaxed truncate">🌟 Đang tự động trình chiếu...</span>
+        </div>
+
+        <!-- Primary Controls Row -->
+        <div class="grid grid-cols-3 gap-1.5">
+          <!-- Play / Pause -->
+          <button id="auto-play-toggle-btn" class="py-2 px-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-400 hover:to-rose-500 text-white font-semibold text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition" title="Tạm dừng / Tiếp tục">
+            <i data-lucide="pause" id="auto-play-icon" class="w-3.5 h-3.5 text-white"></i>
+            <span id="auto-play-text" class="text-[11px] truncate">Đang Chiếu</span>
+          </button>
+
+          <!-- Skip Scene -->
+          <button id="auto-play-skip-btn" class="py-2 px-2.5 rounded-2xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-amber-200 font-semibold text-xs flex items-center justify-center gap-1.5 shadow active:scale-95 transition" title="Chuyển sang cảnh tiếp theo">
+            <i data-lucide="skip-forward" class="w-3.5 h-3.5 text-amber-300"></i>
+            <span class="text-[11px]">Cảnh Tiếp</span>
+          </button>
+
+          <!-- Toggle Effects Dock -->
+          <button id="toggle-dock-btn" class="py-2 px-2.5 rounded-2xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/40 text-cyan-200 font-semibold text-xs flex items-center justify-center gap-1.5 shadow active:scale-95 transition" title="Mở bảng nút hiệu ứng">
+            <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5 text-cyan-300"></i>
+            <span id="toggle-dock-label" class="text-[11px] truncate">Bảng Nút</span>
+          </button>
+        </div>
+
+        <!-- Secondary Tools Row -->
+        <div class="flex items-center justify-between gap-1.5 pt-1.5 border-t border-white/10 text-xs">
+          <button id="audio-toggle-btn" class="flex-1 py-1.5 px-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-slate-200 flex items-center justify-center gap-1 active:scale-95 transition" title="Bật/Tắt Nhạc">
+            <i data-lucide="volume-2" id="audio-icon" class="w-3.5 h-3.5 text-pink-300"></i>
+            <span id="audio-label" class="text-[10px]">Nhạc: Bật</span>
+          </button>
+
+          <button id="upload-photo-btn" class="flex-1 py-1.5 px-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-emerald-200 flex items-center justify-center gap-1 active:scale-95 transition" title="Thêm Ảnh Khác Của Bé">
+            <i data-lucide="image-plus" class="w-3.5 h-3.5 text-emerald-300"></i>
+            <span class="text-[10px]">+ Thêm Ảnh</span>
+          </button>
+          <input id="photo-input" type="file" accept="image/*" multiple class="hidden">
+
+          <button id="fullscreen-btn" class="p-1.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-slate-200 flex items-center justify-center active:scale-95 transition" title="Toàn Màn Hình">
+            <i data-lucide="maximize" id="fullscreen-icon" class="w-3.5 h-3.5 text-amber-300"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- EXPANDED STATE 2: CARD / STAR DETAILS (When tapping a 3D photo card or star) -->
+      <div id="di-expanded-card" class="hidden flex-col gap-2">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <span id="card-star-badge" class="w-9 h-9 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 text-white font-bold text-sm flex items-center justify-center shadow-lg flex-shrink-0">
+              💖
+            </span>
+            <div>
+              <div id="card-star-subtitle" class="text-[10px] font-semibold uppercase tracking-wider text-pink-300">Kỷ niệm 3D</div>
+              <h3 id="card-star-title" class="text-sm font-bold text-white">Bé Gia Hân • 17/03/2011</h3>
+            </div>
+          </div>
+          <button onclick="event.stopPropagation(); collapseDynamicIsland();" class="p-1 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 transition">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Preview Image of Bé Gia Hân -->
+        <div id="card-photo-container" class="mt-1 hidden justify-center">
+          <img id="card-photo-img" src="" alt="Ảnh Bé Gia Hân" class="max-h-48 w-auto rounded-2xl object-cover border-2 border-pink-400/50 shadow-xl">
+        </div>
+
+        <p id="card-star-body" class="mt-1 text-xs text-slate-100 leading-relaxed bg-black/60 rounded-xl p-2.5 border border-white/15 max-h-24 overflow-y-auto"></p>
+
+        <div class="mt-1 flex items-center justify-between gap-2">
+          <span class="text-[10px] text-amber-200 italic">✨ Kéo xoay quả cầu 360°!</span>
+          <button id="next-star-btn" class="px-3 py-1 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white text-[11px] font-semibold shadow hover:opacity-95 active:scale-95 transition">
+            Xem tiếp →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FULL LOVE LETTER MODAL -->
+  <div id="letter-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-all">
+    <div class="glass-panel max-w-lg w-full rounded-3xl p-6 sm:p-8 relative border border-pink-400/40 shadow-2xl">
+      <button id="close-letter-btn" class="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-slate-300 hover:text-white transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="flex items-center gap-2 text-amber-200 text-xs font-semibold uppercase tracking-wider mb-1">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>Lá Thư Từ Bầu Trời Sao 3D</span>
+      </div>
+      <h3 class="font-handwriting text-3xl sm:text-4xl font-bold text-white star-glow mb-3">
+        Gửi Bé Gia Hân Của Anh 💖
+      </h3>
+
+      <div class="space-y-3 text-xs sm:text-sm text-slate-200 leading-relaxed bg-black/70 p-4 rounded-2xl border border-white/15 max-h-[55vh] overflow-y-auto">
+        <p>
+          Chào cô bé cung <strong>Song Ngư sinh ngày 17 tháng 3 năm 2011</strong> của anh! Anh làm món quà <strong>Quả Cầu 3D & Bầu Trời Sao</strong> này dành riêng cho <strong>Bé Gia Hân</strong>.
+        </p>
+        <p>
+          Mỗi tấm ảnh xoay tròn trên quả cầu 3D và mỗi ngôi sao sáng trên bầu trời đêm đều lưu giữ những nụ cười và kỷ niệm ngọt ngào nhất của em. Dù em có xoay quả cầu đi hướng nào, thì ở tâm điểm vẫn luôn là tình cảm chân thành của anh hướng về em.
+        </p>
+        <p>
+          Chúc công chúa nhỏ của anh lúc nào cũng nở nụ cười thật tươi, luôn xinh đẹp, học giỏi và mãi bình an bên anh nhé!
+        </p>
+        <div class="pt-2 border-t border-white/15 flex items-center justify-between text-pink-300">
+          <span class="text-xs font-medium">✨ Ngôi sao 17/03/2011</span>
+          <span class="font-handwriting text-2xl font-bold text-rose-300">Anh yêu của em ♥</span>
+        </div>
+      </div>
+
+      <div class="mt-4 flex justify-end gap-2">
+        <button id="letter-wish-btn" class="w-full py-3 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-amber-500 text-white text-xs sm:text-sm font-bold shadow-lg active:scale-95 transition">
+          Bắn pháo hoa & mưa sao băng chúc Bé Gia Hân 🌠
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Banner -->
+  <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 hidden glass-panel px-4 py-2 rounded-full text-xs font-semibold text-white border border-white/30 shadow-2xl">
+    <span id="toast-text">✨</span>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // --- Calculate days since 17/03/2011 ---
+    const birthDate = new Date(2011, 2, 17);
+    const nowDate = new Date();
+    const daysSinceBirth = Math.max(1, Math.floor((nowDate - birthDate) / (1000 * 60 * 60 * 24)));
+    document.getElementById('days-alive-badge').textContent = `Tỏa sáng ${daysSinceBirth.toLocaleString('vi-VN')} ngày`;
+
+    // --- UPGRADED WEB AUDIO SYNTHESIZER ---
+    let audioCtx = null;
+    let soundOn = true;
+    let melodyTimer = null;
+    let masterGain = null;
+
+    function ensureAudio() {
+      if (!audioCtx) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (AC) {
+          audioCtx = new AC();
+          masterGain = audioCtx.createGain();
+          masterGain.gain.setValueAtTime(0.35, audioCtx.currentTime);
+          masterGain.connect(audioCtx.destination);
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playStarChime(stepIndex = 0, dur = 0.85) {
+      if (!soundOn) return;
+      ensureAudio();
+      if (!audioCtx || !masterGain) return;
+
+      const scale = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5, 1174.66, 1318.5, 1567.98, 1760.0];
+      const freq = scale[stepIndex % scale.length];
+
+      const osc = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+      osc2.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      osc2.frequency.setValueAtTime(freq * 2.01, audioCtx.currentTime);
+
+      const now = audioCtx.currentTime;
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.linearRampToValueAtTime(0.09, now + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+
+      osc.connect(gain);
+      osc2.connect(gain);
+      gain.connect(masterGain);
+
+      osc.start(now);
+      osc2.start(now);
+      osc.stop(now + dur);
+      osc2.stop(now + dur);
+    }
+
+    function playMagicChord() {
+      if (!soundOn) return;
+      [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) => {
+        setTimeout(() => playStarChime(i + 2, 1.2), i * 85);
+      });
+    }
+
+    function playFireworkSound() {
+      if (!soundOn) return;
+      ensureAudio();
+      if (!audioCtx || !masterGain) return;
+
+      try {
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(140, now);
+        osc.frequency.exponentialRampToValueAtTime(35, now + 0.25);
+        gain.gain.setValueAtTime(0.07, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc.connect(gain);
+        gain.connect(masterGain);
+        osc.start(now);
+        osc.stop(now + 0.25);
+
+        setTimeout(() => playStarChime(Math.floor(Math.random() * 4) + 4, 0.5), 60);
+      } catch (e) {}
+    }
+
+    const romanticChords = [
+      [587.33, 739.99, 880.00],  // D
+      [440.00, 554.37, 659.25],  // A
+      [493.88, 587.33, 739.99],  // Bm
+      [369.99, 440.00, 554.37],  // F#m
+      [392.00, 493.88, 587.33],  // G
+      [587.33, 739.99, 880.00],  // D
+      [392.00, 493.88, 659.25],  // G
+      [440.00, 554.37, 659.25]   // A
+    ];
+    let chordCursor = 0;
+
+    function startRomanticMusicLoop() {
+      if (melodyTimer) clearInterval(melodyTimer);
+      melodyTimer = setInterval(() => {
+        if (!soundOn) return;
+        if (!document.getElementById('intro-modal').classList.contains('hidden')) return;
+        ensureAudio();
+        if (!audioCtx) return;
+
+        const chord = romanticChords[chordCursor % romanticChords.length];
+        chord.forEach((freq, idx) => {
+          setTimeout(() => {
+            if (!soundOn) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = idx === 0 ? 'triangle' : 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+            const now = audioCtx.currentTime;
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.linearRampToValueAtTime(0.045, now + 0.05);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.6);
+
+            osc.connect(gain);
+            gain.connect(masterGain);
+            osc.start(now);
+            osc.stop(now + 1.6);
+          }, idx * 140);
+        });
+        chordCursor++;
+      }, 1250);
+    }
+
+    let toastTimeout = null;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      t.classList.remove('hidden');
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => t.classList.add('hidden'), 3200);
+    }
+
+    function updateStoryCaption(text) {
+      const el = document.getElementById('story-caption-text');
+      const expEl = document.getElementById('di-expanded-caption');
+      if (el) {
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.textContent = text;
+          el.style.opacity = '1';
+        }, 250);
+      }
+      if (expEl) {
+        expEl.textContent = text;
+      }
+    }
+
+    // --- Passcode Input (1703) ---
+    let enteredPin = '';
+    function updatePinDots() {
+      for (let i = 0; i < 4; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        if (i < enteredPin.length) {
+          dot.classList.add('bg-pink-400', 'scale-110');
+        } else {
+          dot.classList.remove('bg-pink-400', 'scale-110');
+        }
+      }
+      document.getElementById('pass-hint').classList.add('opacity-0');
+    }
+
+    document.querySelectorAll('.num-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playStarChime(enteredPin.length + 1, 0.3);
+        if (enteredPin.length < 4) {
+          enteredPin += btn.getAttribute('data-num');
+          updatePinDots();
+          if (enteredPin.length === 4) {
+            if (enteredPin === '1703') {
+              launchGiftExperience();
+            } else {
+              document.getElementById('pass-hint').classList.remove('opacity-0');
+              setTimeout(() => {
+                enteredPin = '';
+                updatePinDots();
+              }, 700);
+            }
+          }
+        }
+      });
+    });
+
+    document.getElementById('pass-clear-btn').addEventListener('click', () => {
+      enteredPin = '';
+      updatePinDots();
+    });
+
+    document.getElementById('pass-del-btn').addEventListener('click', () => {
+      enteredPin = enteredPin.slice(0, -1);
+      updatePinDots();
+    });
+
+    // --- 25 PHOTOS OF BÉ GIA HÂN FROM GITHUB REPO (giabaotranle04112011/-nh-c-a-gia-h-n-a3) ---
+    const RAW_GITHUB_BASE = 'https://raw.githubusercontent.com/giabaotranle04112011/-nh-c-a-gia-h-n-a3/main/';
+    const giaHanPhotoFiles = [
+      '1793433354765_775033415349149357_4510594245009994740_bed935a2ba71a569e1d7e2d9a5f684aa.jpg',
+      '1793433354887_775033415349149357_4510594245009994740_8d3c9976ab1fb9cdb4b722c73166f66e.jpg',
+      '1793433355073_775033415349149357_4510594245009994740_1173a6a22b907784ff190bc6022999cb.jpg',
+      '1793433355190_775033415349149357_4510594245009994740_ee7991c60b350a7463cdeb2e035b2b17.jpg',
+      '1793433355377_775033415349149357_4510594245009994740_5cd551f66afe5c9ca304abe7d213387c.jpg',
+      '1793433355513_775033415349149357_4510594245009994740_0923152f5ab35569a946540972bdab96.jpg',
+      '1793433355703_775033415349149357_4510594245009994740_1d0fe08bac0b924956eb4a6a3088d7e6.jpg',
+      '1793433355832_775033415349149357_4510594245009994740_b1c4916e7509599e0a46ff623030aa4e.jpg',
+      '24b93e56f6a04d4fb1ef13b555f4d9be.webp',
+      '7be6f20629864c81a03bc2bc6507b2ea.webp',
+      'Messenger_creation_000B1369-1FBC-4ACF-9308-55B02ABA21FA.jpeg',
+      'Messenger_creation_13410481-8DC9-4603-A31D-5CF2C7D43700.jpeg',
+      'Messenger_creation_2590B8CA-0D85-4DE5-8226-857082919354.jpeg',
+      'Messenger_creation_3D05E3F0-7F22-494A-B3CA-52C9DBE6B7D0.jpeg',
+      'Messenger_creation_3F4B71E8-E4F0-4B22-A402-6D43351EC4EE.jpeg',
+      'Messenger_creation_5F9FAF8C-BBF3-4817-95D1-32C5FC23A689.jpeg',
+      'Messenger_creation_64BECEB9-A96D-4BE8-871F-97100C312DC8.jpeg',
+      'Messenger_creation_679D1140-DD17-44DD-9C1F-A4BA1A7B147B.jpeg',
+      'Messenger_creation_720637F0-2032-46E1-A8AE-9CE49479F910.jpeg',
+      'Messenger_creation_72D3808F-5855-44EC-841E-7A38B131C17D.jpeg',
+      'Messenger_creation_769AF32D-7D7D-4FD2-964A-D0A37E73D35C.jpeg',
+      'Messenger_creation_A0178DB6-C5AA-4523-879D-FCE9D9C9B312.jpeg',
+      'Messenger_creation_E32A2258-E978-457B-AF37-3CCC4310FB77.jpeg',
+      'Messenger_creation_E475CB7F-6CD9-4D3E-BCC2-BB55D69ED8DE.jpeg',
+      'Messenger_creation_FB08F330-A01D-4E43-AC62-4CE15923F34B.jpeg'
+    ];
+
+    // 25 Romantic Cards for Bé Gia Hân
+    const sphereCardsData = [
+      { emoji: '👑', title: 'Bé Gia Hân', sub: '17/03/2011', bg1: '#ec4899', bg2: '#be185d', msg: 'Chào công chúa nhỏ Gia Hân sinh ngày 17 tháng 3 năm 2011 của anh! Em luôn là điều ngọt ngào nhất trần đời.' },
+      { emoji: '🎀', title: 'Bé Yêu Của Anh', sub: 'Cô Bé Đáng Yêu', bg1: '#a855f7', bg2: '#6b21a8', msg: 'Cô bé đáng yêu mà anh thích gọi và trò chuyện mỗi ngày, nhìn thôi đã thấy cưng xỉu rồi!' },
+      { emoji: '♓', title: 'Cung Song Ngư', sub: 'Cô Gái Mộng Mơ', bg1: '#3b82f6', bg2: '#1d4ed8', msg: 'Cô bé Song Ngư (17/03) vừa dịu dàng, ấm áp lại sống tình cảm khiến anh thương mãi không thôi.' },
+      { emoji: '☀️', title: 'Nụ Cười Tỏa Nắng', sub: 'Xinh Nhất Vũ Trụ', bg1: '#f43f5e', bg2: '#9f1239', msg: 'Mỗi lần Bé Gia Hân cười là cả bầu trời đêm của anh bừng sáng rực rỡ!' },
+      { emoji: '🧋', title: 'Trà Sữa Full Topping', sub: 'Anh Bao Trọn Gói', bg1: '#f59e0b', bg2: '#b45309', msg: 'Em thèm trà sữa hay ăn vặt gì cứ bảo anh, anh chiều chuộng bé số 1 luôn!' },
+      { emoji: '🥺', title: 'Lúc Em Nhõng Nhẽo', sub: 'Cưng Xỉu Luôn', bg1: '#ec4899', bg2: '#9d174d', msg: 'Ngay cả lúc em dỗi hay làm nũng với anh trông cũng đáng yêu hết phần thiên hạ.' },
+      { emoji: '💖', title: 'Thương Em Nhất', sub: 'Anh ♥ Bé', bg1: '#e11d48', bg2: '#881337', msg: 'Giữa 8 tỷ người trên thế giới, anh chỉ muốn dành trọn sự dịu dàng này cho riêng Gia Hân.' },
+      { emoji: '🌸', title: 'Tuổi 15 Rạng Rỡ', sub: '17/03/2011', bg1: '#d946ef', bg2: '#86198f', msg: 'Chúc em bé của anh luôn hồn nhiên, học giỏi, vui vẻ và tỏa sáng như đóa hoa mùa xuân.' },
+      { emoji: '🌠', title: 'Điều Ước Sao Băng', sub: 'Mãi Bên Nhau', bg1: '#6366f1', bg2: '#3730a3', msg: 'Mỗi ngôi sao băng bay qua bầu trời đêm đều mang theo lời chúc bình an anh gửi tới em.' },
+      { emoji: '📸', title: 'Khoảnh Khắc Đẹp Nhất', sub: 'Kỷ Niệm Đôi Mình', bg1: '#f43f5e', bg2: '#be123c', msg: 'Ánh mắt trong veo và nụ cười của Gia Hân làm xao xuyến trái tim anh mỗi ngày.' },
+      { emoji: '🧸', title: 'Ôm Một Cái Nha', sub: 'Ấm Áp Mỗi Ngày', bg1: '#ec4899', bg2: '#be185d', msg: 'Khi nào em thấy mệt hay buồn, nhớ là luôn có anh ở đây lắng nghe và vỗ về bé.' },
+      { emoji: '🍭', title: 'Kẹo Ngọt Tình Yêu', sub: 'Ngọt Hơn Đường', bg1: '#a855f7', bg2: '#7e22ce', msg: 'Nói chuyện với Bé Gia Hân một chút thôi là cả ngày của anh ngập tràn năng lượng tích cực.' },
+      { emoji: '🌙', title: 'Ru Em Ngủ Ngon', sub: 'Mơ Đẹp Nha Bé', bg1: '#0ea5e9', bg2: '#0369a1', msg: 'Bầu trời đêm ngàn sao này sẽ ru công chúa nhỏ của anh ngủ thật ngon mỗi tối.' },
+      { emoji: '🎡', title: 'Hẹn Hò Đi Chơi', sub: 'Nắm Tay Dạo Phố', bg1: '#f97316', bg2: '#c2410c', msg: 'Đi đâu cũng được, miễn là đi cùng Bé Gia Hân thì nơi đó đều trở thành nơi đẹp nhất.' },
+      { emoji: '💌', title: 'Bức Thư Tình', sub: 'Gửi Riêng Gia Hân', bg1: '#ec4899', bg2: '#9d174d', msg: 'Lá thư ánh sao chứa chan tình cảm anh viết riêng cho cô bé đáng yêu của anh.' },
+      { emoji: '🎵', title: 'Giai Điệu Của Em', sub: 'Bản Nhạc Ngọt Ngào', bg1: '#8b5cf6', bg2: '#5b21b6', msg: 'Giọng nói và tiếng cười của em chính là bản nhạc êm dịu nhất mà anh muốn nghe mỗi ngày.' },
+      { emoji: '🍀', title: 'Bình An & May Mắn', sub: 'Luôn Mỉm Cười', bg1: '#10b981', bg2: '#047857', msg: 'Anh chúc mọi điều tốt đẹp, may mắn và dịu dàng nhất trên đời đều đến với Gia Hân.' },
+      { emoji: '💍', title: 'Ưu Tiên Số 1', sub: 'Mãi Là Của Anh', bg1: '#e11d48', bg2: '#9f1239', msg: 'Dù quả cầu 3D này có xoay bao nhiêu vòng thì vị trí số 1 trong lòng anh vẫn luôn là Bé Gia Hân!' },
+      { emoji: '✨', title: 'Ánh Mắt Thiên Thần', sub: 'Ngân Hà Long Lanh', bg1: '#0284c7', bg2: '#0369a1', msg: 'Đôi mắt tròn xoe long lanh của em như chứa đựng cả dải ngân hà lấp lánh ánh sao.' },
+      { emoji: '🌷', title: 'Đóa Hoa Mùa Xuân', sub: 'Tháng Ba Tươi Đẹp', bg1: '#f43f5e', bg2: '#be123c', msg: 'Em như bông hoa nở rộ giữa mùa xuân tháng Ba, mang tới sự rạng rỡ cho cuộc sống của anh.' },
+      { emoji: '🥰', title: 'Đáng Yêu Hết Nấc', sub: 'Cưng Nhất Quả Đất', bg1: '#d946ef', bg2: '#a21caf', msg: 'Mỗi biểu cảm của Bé Gia Hân đều toát lên nét ngây thơ và đáng yêu khó cưỡng.' },
+      { emoji: '🎈', title: 'Niềm Vui Nhỏ Bé', sub: 'Mỗi Ngày Bên Em', bg1: '#f59e0b', bg2: '#b45309', msg: 'Chỉ cần nhìn thấy bé vui vẻ là mọi mệt mỏi trong ngày của anh tan biến hết.' },
+      { emoji: '🍓', title: 'Ngọt Ngào Như Dâu', sub: 'Bé Con Của Anh', bg1: '#e11d48', bg2: '#9f1239', msg: 'Cô bé ngọt ngào nhất thế gian, mãi là em bé ngoan và hạnh phúc của anh nhé!' },
+      { emoji: '💫', title: 'Vì Sao Tỏa Sáng', sub: 'Đẹp Nhất Bầu Trời', bg1: '#8b5cf6', bg2: '#6d28d9', msg: 'Trong hàng triệu vì sao trên trời đêm, em chính là ngôi sao sáng và lộng lẫy nhất.' },
+      { emoji: '🕊️', title: 'Mãi Mãi Bên Nhau', sub: 'Trọn Đời Thương Em', bg1: '#ec4899', bg2: '#be185d', msg: 'Cảm ơn Gia Hân đã đến bên anh, chúc tình yêu đôi mình luôn bền chặt và hạnh phúc ngập tràn!' }
+    ];
+
+    // Map each card with its photo file and preloaded Image
+    const cardTextures = [];
+    const loadedImages = [];
+
+    function renderCardTexture(index, customImg = null) {
+      const item = sphereCardsData[index];
+      const c = document.createElement('canvas');
+      c.width = 180;
+      c.height = 220;
+      const g = c.getContext('2d');
+
+      // Card frame gradient
+      const grad = g.createLinearGradient(0, 0, 180, 220);
+      grad.addColorStop(0, item.bg1);
+      grad.addColorStop(1, item.bg2);
+      g.fillStyle = grad;
+      g.beginPath();
+      g.roundRect(4, 4, 172, 212, 22);
+      g.fill();
+
+      // Inner photo container
+      g.save();
+      g.beginPath();
+      g.roundRect(12, 12, 156, 142, 16);
+      g.clip();
+
+      const imgToDraw = customImg || loadedImages[index];
+
+      if (imgToDraw && imgToDraw.complete && imgToDraw.naturalWidth > 0) {
+        const scale = Math.max(156 / imgToDraw.naturalWidth, 142 / imgToDraw.naturalHeight);
+        const dw = imgToDraw.naturalWidth * scale;
+        const dh = imgToDraw.naturalHeight * scale;
+        g.drawImage(imgToDraw, 12 + (156 - dw) / 2, 12 + (142 - dh) / 2, dw, dh);
+      } else {
+        g.fillStyle = 'rgba(0, 0, 0, 0.28)';
+        g.fillRect(12, 12, 156, 142);
+
+        g.fillStyle = 'rgba(255, 255, 255, 0.18)';
+        g.beginPath();
+        g.arc(36, 36, 18, 0, Math.PI * 2);
+        g.arc(142, 122, 24, 0, Math.PI * 2);
+        g.fill();
+
+        g.font = '54px sans-serif';
+        g.textAlign = 'center';
+        g.textBaseline = 'middle';
+        g.fillText(item.emoji, 90, 82);
+      }
+      g.restore();
+
+      // Shiny polaroid border
+      g.strokeStyle = 'rgba(255, 255, 255, 0.75)';
+      g.lineWidth = 3;
+      g.beginPath();
+      g.roundRect(4, 4, 172, 212, 22);
+      g.stroke();
+
+      // Card Caption
+      g.fillStyle = '#ffffff';
+      g.font = 'bold 16px Inter, sans-serif';
+      g.textAlign = 'center';
+      g.fillText(item.title, 90, 176);
+
+      g.fillStyle = 'rgba(255, 240, 245, 0.9)';
+      g.font = '600 12px Inter, sans-serif';
+      g.fillText(item.sub, 90, 198);
+
+      cardTextures[index] = c;
+    }
+
+    // Preload all 25 images with local path and GitHub CDN fallback
+    function preloadAllGiaHanPhotos() {
+      giaHanPhotoFiles.forEach((file, idx) => {
+        const localPath = `./images/${file}`;
+        const remotePath = `${RAW_GITHUB_BASE}${file}`;
+
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+
+        img.onload = () => {
+          loadedImages[idx] = img;
+          renderCardTexture(idx, img);
+        };
+
+        img.onerror = () => {
+          // If local path fails, fallback to remote GitHub raw URL
+          const fallbackImg = new Image();
+          fallbackImg.crossOrigin = 'anonymous';
+          fallbackImg.onload = () => {
+            loadedImages[idx] = fallbackImg;
+            renderCardTexture(idx, fallbackImg);
+          };
+          fallbackImg.src = remotePath;
+        };
+
+        img.src = localPath;
+      });
+    }
+
+    // Fibonacci Sphere Nodes for 25 cards
+    const sphereCardNodes = [];
+    function initSphereCardNodes() {
+      sphereCardNodes.length = 0;
+      const n = sphereCardsData.length; // 25
+      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+
+      for (let i = 0; i < n; i++) {
+        renderCardTexture(i);
+        const y = 1 - (i / (n - 1)) * 2;
+        const radiusAtY = Math.sqrt(1 - y * y);
+        const theta = goldenAngle * i;
+
+        const rSphere = 280; // Optimized spacing for 25 cards
+        const sx = Math.cos(theta) * radiusAtY * rSphere;
+        const sy = y * rSphere;
+        const sz = Math.sin(theta) * radiusAtY * rSphere;
+
+        const exScale = 1.85 + (i % 3) * 0.25;
+        sphereCardNodes.push({
+          index: i,
+          x: sx,
+          y: sy,
+          z: sz,
+          sphereX: sx,
+          sphereY: sy,
+          sphereZ: sz,
+          explodeX: sx * exScale,
+          explodeY: sy * exScale,
+          explodeZ: sz * exScale,
+          screenX: 0,
+          screenY: 0,
+          screenW: 0,
+          screenH: 0,
+          visible: false
+        });
+      }
+    }
+    initSphereCardNodes();
+    preloadAllGiaHanPhotos();
+
+    // Upload custom user photos
+    document.getElementById('upload-photo-btn').addEventListener('click', () => {
+      document.getElementById('photo-input').click();
+    });
+
+    document.getElementById('photo-input').addEventListener('change', e => {
+      const files = Array.from(e.target.files || []);
+      if (!files.length) return;
+
+      files.forEach((file, idx) => {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const img = new Image();
+          img.onload = () => {
+            for (let cIdx = idx; cIdx < sphereCardsData.length; cIdx += files.length) {
+              loadedImages[cIdx] = img;
+              renderCardTexture(cIdx, img);
+            }
+          };
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+
+      playMagicChord();
+      showToast(`📸 Đã cập nhật ${files.length} ảnh của bé lên Quả Cầu 3D!`);
+    });
+
+    // --- 7 Constellation Stars (G - I - A - H - Â - N - ♥) ---
+    const mainStarsData = [
+      { id: 0, letter: 'G', name: 'Ngôi Sao Khởi Đầu • 17/03/2011', subtitle: 'Vì sao số 1 • Chữ G', x3d: -310, y3d: -135, z3d: -60, msg: 'Ngày 17 tháng 3 năm 2011, bầu trời đêm đón chào một thiên thần nhỏ mang tên Gia Hân. Cảm ơn ngày hôm ấy đã mang em đến thế giới này! 🌸' },
+      { id: 1, letter: 'I', name: 'Chòm Sao Song Ngư Dịu Dàng ♓', subtitle: 'Vì sao số 2 • Chữ I', x3d: -210, y3d: 95, z3d: -80, msg: 'Cô gái cung Song Ngư của anh vừa ngọt ngào, tình cảm lại hay mộng mơ. Ở bên cạnh em lúc nào anh cũng thấy bình yên.' },
+      { id: 2, letter: 'A', name: 'Ngôi Sao Ánh Mắt Thiên Thần 🎀', subtitle: 'Vì sao số 3 • Chữ A', x3d: -100, y3d: -120, z3d: -50, msg: 'Gia Hân chính là cái tên ngọt ngào nhất mà anh luôn muốn gọi mỗi ngày. Dù lúc em cười hay nhõng nhẽo đều xinh nhất!' },
+      { id: 3, letter: 'H', name: 'Vì Sao Nụ Cười Tỏa Nắng ☀️', subtitle: 'Vì sao số 4 • Chữ H', x3d: 15, y3d: 110, z3d: -70, msg: 'Giữa bầu trời đêm đen thẳm, nụ cười của Bé Gia Hân còn sáng hơn cả ngàn vì sao.' },
+      { id: 4, letter: 'Â', name: 'Ngôi Sao Của Sự Chiều Chuộng 🧋', subtitle: 'Vì sao số 5 • Chữ Â', x3d: 130, y3d: -130, z3d: -65, msg: 'Anh hứa sẽ luôn là người lắng nghe, nhường nhịn, dỗ dành khi em dỗi và dẫn bé đi ăn hết mọi món ngon!' },
+      { id: 5, letter: 'N', name: 'Vì Sao Hạnh Phúc & Bình An 🍀', subtitle: 'Vì sao số 6 • Chữ N', x3d: 230, y3d: 90, z3d: -55, msg: 'Chúc công chúa nhỏ Gia Hân của anh luôn học giỏi, rạng rỡ, bình an và hạnh phúc.' },
+      { id: 6, letter: '♥', name: 'Ngôi Sao Trái Tim Vĩnh Cửu 💖', subtitle: 'Vì sao số 7 • Trái Tim', x3d: 320, y3d: -105, z3d: -40, msg: 'Khi 7 ngôi sao nối lại với nhau, tên của GIA HÂN ♥ sẽ tỏa sáng rực rỡ nhất trong không gian 3D!' }
+    ];
+
+    // 3D Canvas Setup
+    const canvas = document.getElementById('sky-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    let camYaw = 0;
+    let camPitch = 0;
+    let velYaw = 0.0035;
+    let velPitch = 0;
+    let autoRotate = true;
+    let camZoom = 1.0;
+    let targetZoom = 1.0;
+
+    let isDraggingSky = false;
+    let lastPointerX = 0, lastPointerY = 0;
+    let totalDragDist = 0;
+    let warpMode = false;
+    let userInactiveTimer = null;
+
+    let skyMode = 'sphere3d';
+    let isSphereExploded = false;
+    let isSpellingName = false;
+    let textShapeIndex = 0;
+
+    const sphereStars = [];
+    const SPHERE_STAR_COUNT = 850;
+    const realStarColors = [
+      { r: 255, g: 255, b: 255 },
+      { r: 202, g: 216, b: 255 },
+      { r: 255, g: 244, b: 232 },
+      { r: 255, g: 229, b: 180 },
+      { r: 255, g: 204, b: 145 },
+      { r: 175, g: 200, b: 255 }
+    ];
+
+    const nebula3D = [];
+    let morphParticles = [];
+    const meteors = [];
+    const lanterns = [];
+    const fireworks = [];
+    const cursorDust = [];
+    const shockwaves = [];
+
+    const lanternWishes = [
+      'Gia Hân ♥',
+      'Bé Yêu 17/03',
+      'Thương Bé Nhất',
+      'Luôn Vui Vẻ Nha',
+      'Mãi Bên Nhau 💕',
+      'Công Chúa Của Anh 🌸',
+      'Song Ngư 2011',
+      'Bình An & May Mắn'
+    ];
+
+    const ringPhrases = [
+      '★ GIA HÂN',
+      '♥ BÉ YÊU',
+      '★ 17/03/2011',
+      '♥ SONG NGƯ',
+      '★ YÊU BÉ NHẤT',
+      '♥ CÔNG CHÚA NHỎ'
+    ];
+
+    const unlockedStars = new Set();
+    let activeCardOrStarIndex = 0;
+    let projectedMainStars = [];
+
+    // === HIGH-PERFORMANCE PRE-RENDERED SPRITE SYSTEM ===
+    // Pre-rendering glow & flares eliminates 50+ dynamic gradient allocations per frame!
+    let starSpritePink = null;
+    let starSpriteYellow = null;
+    let nebulaSpritePink = null;
+    let nebulaSpriteBlue = null;
+    let lanternGlowSprite = null;
+
+    function initPreRenderedSprites() {
+      // 1. Pink Bright Star Sprite (48x48)
+      starSpritePink = document.createElement('canvas');
+      starSpritePink.width = 48;
+      starSpritePink.height = 48;
+      const spCtx = starSpritePink.getContext('2d');
+      const spGrad = spCtx.createRadialGradient(24, 24, 1, 24, 24, 23);
+      spGrad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      spGrad.addColorStop(0.25, 'rgba(244, 114, 182, 0.9)');
+      spGrad.addColorStop(0.65, 'rgba(244, 114, 182, 0.25)');
+      spGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      spCtx.fillStyle = spGrad;
+      spCtx.beginPath();
+      spCtx.arc(24, 24, 23, 0, Math.PI * 2);
+      spCtx.fill();
+
+      // 2. Yellow Bright Star Sprite (48x48)
+      starSpriteYellow = document.createElement('canvas');
+      starSpriteYellow.width = 48;
+      starSpriteYellow.height = 48;
+      const syCtx = starSpriteYellow.getContext('2d');
+      const syGrad = syCtx.createRadialGradient(24, 24, 1, 24, 24, 23);
+      syGrad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      syGrad.addColorStop(0.25, 'rgba(253, 224, 71, 0.9)');
+      syGrad.addColorStop(0.65, 'rgba(245, 158, 11, 0.25)');
+      syGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      syCtx.fillStyle = syGrad;
+      syCtx.beginPath();
+      syCtx.arc(24, 24, 23, 0, Math.PI * 2);
+      syCtx.fill();
+
+      // 3. Pink Nebula Sprite (128x128)
+      nebulaSpritePink = document.createElement('canvas');
+      nebulaSpritePink.width = 128;
+      nebulaSpritePink.height = 128;
+      const npCtx = nebulaSpritePink.getContext('2d');
+      const npGrad = npCtx.createRadialGradient(64, 64, 2, 64, 64, 62);
+      npGrad.addColorStop(0, 'rgba(244, 114, 182, 0.6)');
+      npGrad.addColorStop(0.45, 'rgba(168, 85, 247, 0.22)');
+      npGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      npCtx.fillStyle = npGrad;
+      npCtx.beginPath();
+      npCtx.arc(64, 64, 62, 0, Math.PI * 2);
+      npCtx.fill();
+
+      // 4. Blue Nebula Sprite (128x128)
+      nebulaSpriteBlue = document.createElement('canvas');
+      nebulaSpriteBlue.width = 128;
+      nebulaSpriteBlue.height = 128;
+      const nbCtx = nebulaSpriteBlue.getContext('2d');
+      const nbGrad = nbCtx.createRadialGradient(64, 64, 2, 64, 64, 62);
+      nbGrad.addColorStop(0, 'rgba(186, 230, 253, 0.6)');
+      nbGrad.addColorStop(0.45, 'rgba(56, 189, 248, 0.22)');
+      nbGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      nbCtx.fillStyle = nbGrad;
+      nbCtx.beginPath();
+      nbCtx.arc(64, 64, 62, 0, Math.PI * 2);
+      nbCtx.fill();
+
+      // 5. Lantern Glow Sprite (64x64)
+      lanternGlowSprite = document.createElement('canvas');
+      lanternGlowSprite.width = 64;
+      lanternGlowSprite.height = 64;
+      const lgCtx = lanternGlowSprite.getContext('2d');
+      const lgGrad = lgCtx.createRadialGradient(32, 32, 2, 32, 32, 30);
+      lgGrad.addColorStop(0, 'rgba(251, 191, 36, 0.85)');
+      lgGrad.addColorStop(0.4, 'rgba(245, 158, 11, 0.3)');
+      lgGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      lgCtx.fillStyle = lgGrad;
+      lgCtx.beginPath();
+      lgCtx.arc(32, 32, 30, 0, Math.PI * 2);
+      lgCtx.fill();
+    }
+    initPreRenderedSprites();
+
+    function project3D(x, y, z, applyCamZoom = true) {
+      const cosY = Math.cos(camYaw);
+      const sinY = Math.sin(camYaw);
+      const x1 = x * cosY - z * sinY;
+      const z1 = x * sinY + z * cosY;
+
+      const cosP = Math.cos(camPitch);
+      const sinP = Math.sin(camPitch);
+      const y2 = y * cosP - z1 * sinP;
+      const z2 = y * sinP + z1 * cosP;
+
+      // Responsive FOV: scales with screen size so objects fit cleanly on all devices
+      const baseFov = Math.min(620, Math.max(340, height * 0.96));
+      const fov = baseFov * (applyCamZoom ? camZoom : 1);
+      const cameraDist = 720;
+      const depth = cameraDist + z2;
+
+      if (depth <= 20) {
+        return { visible: false, sx: 0, sy: 0, scale: 0, z2 };
+      }
+
+      const scale = fov / depth;
+      return {
+        visible: true,
+        sx: width / 2 + x1 * scale,
+        sy: height * 0.5 + y2 * scale,
+        scale,
+        z2
+      };
+    }
+
+    function initCelestialSphere3D() {
+      sphereStars.length = 0;
+      for (let i = 0; i < SPHERE_STAR_COUNT; i++) {
+        const inMilkyWay = i < SPHERE_STAR_COUNT * 0.55;
+        let theta = Math.random() * Math.PI * 2;
+        let phi;
+        if (inMilkyWay) {
+          const gauss = (Math.random() + Math.random() + Math.random() - 1.5) * 0.36;
+          phi = Math.PI / 2 + gauss;
+        } else {
+          phi = Math.acos(2 * Math.random() - 1);
+        }
+
+        const radius = 620 + Math.random() * 520;
+        let sx = radius * Math.sin(phi) * Math.cos(theta);
+        let sy = radius * Math.cos(phi);
+        let sz = radius * Math.sin(phi) * Math.sin(theta);
+
+        const tilt = 0.56;
+        const ty = sy * Math.cos(tilt) - sz * Math.sin(tilt);
+        const tz = sy * Math.sin(tilt) + sz * Math.cos(tilt);
+        sy = ty;
+        sz = tz;
+
+        const magRoll = Math.random();
+        let size = 0.7;
+        let isMajorStar = false;
+        if (magRoll > 0.982) {
+          size = Math.random() * 1.8 + 2.0;
+          isMajorStar = true;
+        } else if (magRoll > 0.88) {
+          size = Math.random() * 1.0 + 1.1;
+        } else {
+          size = Math.random() * 0.7 + 0.35;
+        }
+
+        const c = realStarColors[Math.floor(Math.random() * realStarColors.length)];
+        sphereStars.push({
+          x: sx,
+          y: sy,
+          z: sz,
+          size,
+          twinkleSpeed: Math.random() * 0.06 + 0.015,
+          phase: Math.random() * Math.PI * 2,
+          c,
+          isMajorStar
+        });
+      }
+
+      nebula3D.length = 0;
+      for (let i = 0; i < 24; i++) {
+        const theta = (i / 24) * Math.PI * 2;
+        const r = 700;
+        let nx = r * Math.cos(theta);
+        let ny = (Math.random() - 0.5) * 130;
+        let nz = r * Math.sin(theta);
+
+        const tilt = 0.56;
+        const ty = ny * Math.cos(tilt) - nz * Math.sin(tilt);
+        const tz = ny * Math.sin(tilt) + nz * Math.cos(tilt);
+
+        nebula3D.push({
+          x: nx,
+          y: ty,
+          z: tz,
+          radius: Math.random() * 200 + 160,
+          alpha: Math.random() * 0.038 + 0.018,
+          isPink: i % 2 === 0
+        });
+      }
+    }
+
+    // Caching text scan results completely eliminates lag spikes & browser freezing!
+    const textTargetCache = new Map();
+    const morphOffCanvas = document.createElement('canvas');
+    morphOffCanvas.width = 800;
+    morphOffCanvas.height = 240;
+    const morphOffCtx = morphOffCanvas.getContext('2d', { willReadFrequently: true });
+
+    function buildMorphParticles3D(line1Text = 'GIA HÂN ♥', line2Text = 'BÉ YÊU • 17/03/2011') {
+      const cacheKey = line1Text + '||' + line2Text;
+      let textTargets3D = textTargetCache.get(cacheKey);
+
+      if (!textTargets3D) {
+        const offW = 800;
+        const offH = 240;
+        morphOffCtx.clearRect(0, 0, offW, offH);
+        morphOffCtx.fillStyle = '#ffffff';
+        morphOffCtx.textAlign = 'center';
+        morphOffCtx.textBaseline = 'middle';
+
+        // Adaptive bold font sizing so text is ALWAYS sharp, giant & legible!
+        let font1 = 'bold 78px Inter, sans-serif';
+        if (line1Text.length === 1) font1 = 'bold 130px Inter, sans-serif';
+        else if (line1Text.length > 12) font1 = 'bold 54px Inter, sans-serif';
+        else if (line1Text.length > 8) font1 = 'bold 66px Inter, sans-serif';
+        morphOffCtx.font = font1;
+        morphOffCtx.fillText(line1Text, offW / 2, offH * 0.36);
+
+        let font2 = 'bold 36px Inter, sans-serif';
+        if (line2Text.length > 20) font2 = 'bold 26px Inter, sans-serif';
+        else if (line2Text.length > 13) font2 = 'bold 30px Inter, sans-serif';
+        morphOffCtx.font = font2;
+        morphOffCtx.fillText(line2Text, offW / 2, offH * 0.78);
+
+        const imgData = morphOffCtx.getImageData(0, 0, offW, offH).data;
+        const step = 3;
+        textTargets3D = [];
+
+        for (let y = 0; y < offH; y += step) {
+          const isLine1 = y < offH * 0.58;
+          for (let x = 0; x < offW; x += step) {
+            const alpha = imgData[(y * offW + x) * 4 + 3];
+            if (alpha > 115) {
+              textTargets3D.push({
+                tx: (x - offW / 2) * 1.15,
+                ty: (y - offH / 2) * 1.15,
+                tz: (Math.random() - 0.5) * 4, // Very tight Z-depth: text stays flat and crystal-clear!
+                isLine1
+              });
+            }
+          }
+        }
+        textTargetCache.set(cacheKey, textTargets3D);
+      }
+
+      const totalCount = Math.max(textTargets3D.length, 900);
+      const newParticles = [];
+
+      for (let i = 0; i < totalCount; i++) {
+        const prev = morphParticles[i];
+        const t = textTargets3D[i % textTargets3D.length] || { tx: 0, ty: 0, tz: 0, isLine1: true };
+
+        const isRing = i % 4 === 0;
+        let hx3d, hy3d, hz3d, pColor;
+
+        if (isRing) {
+          const angle = (i / totalCount) * Math.PI * 24;
+          const ringBand = i % 6 === 0 ? 1.28 : 1.0;
+          const ringRadius = (195 * ringBand) + (Math.random() - 0.5) * 26;
+          hx3d = Math.cos(angle) * ringRadius;
+          hz3d = Math.sin(angle) * ringRadius;
+          hy3d = (Math.random() - 0.5) * 10 + hx3d * 0.24;
+          pColor = '#bae6fd';
+        } else {
+          const u = Math.random() * Math.PI * 2;
+          const v = (Math.random() - 0.5) * 2.0;
+          const scale = 7.8;
+          const rawX = 16 * Math.pow(Math.sin(u), 3);
+          const rawY = -(13 * Math.cos(u) - 5 * Math.cos(2 * u) - 2 * Math.cos(3 * u) - Math.cos(4 * u));
+          const fill = Math.pow(Math.random(), 0.35);
+          hx3d = rawX * scale * fill;
+          hy3d = rawY * scale * fill;
+          hz3d = v * 48 * fill;
+          // Clear, distinct color coding: Line 1 is pink, Line 2 is gold!
+          pColor = t.isLine1 ? '#f472b6' : '#fde047';
+        }
+
+        const randTheta = Math.random() * Math.PI * 2;
+        const randPhi = Math.acos(2 * Math.random() - 1);
+        const randR = 135 + Math.random() * 65;
+
+        newParticles.push({
+          x3d: prev ? prev.x3d : randR * Math.sin(randPhi) * Math.cos(randTheta),
+          y3d: prev ? prev.y3d : randR * Math.cos(randPhi),
+          z3d: prev ? prev.z3d : randR * Math.sin(randPhi) * Math.sin(randTheta),
+          ox3d: randR * Math.sin(randPhi) * Math.cos(randTheta),
+          oy3d: randR * Math.cos(randPhi),
+          oz3d: randR * Math.sin(randPhi) * Math.sin(randTheta),
+          tx3d: t.tx,
+          ty3d: t.ty,
+          tz3d: t.tz,
+          hx3d,
+          hy3d,
+          hz3d,
+          isRing,
+          size: t.isLine1 ? (Math.random() * 1.5 + 1.2) : (Math.random() * 1.2 + 0.9),
+          color: pColor,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+      morphParticles = newParticles;
+    }
+
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      buildMorphParticles3D(
+        textShapeIndex === 0 ? 'GIA HÂN ♥' : 'YÊU EM NHIỀU ♥',
+        'BÉ GIA HÂN • 17/03/2011'
+      );
+    }
+
+
+
+    function toggleSpellName(forceState) {
+      skyMode = 'spelling';
+      if (typeof forceState === 'boolean') {
+        isSpellingName = forceState;
+      } else {
+        if (!isSpellingName) {
+          isSpellingName = true;
+          textShapeIndex = 0;
+        camYaw = 0;
+        camPitch = 0;
+        } else if (textShapeIndex === 0) {
+          textShapeIndex = 1;
+        } else {
+          isSpellingName = false;
+          textShapeIndex = 0;
+        camYaw = 0;
+        camPitch = 0;
+          skyMode = 'sphere3d';
+        }
+      }
+
+      buildMorphParticles3D(
+        textShapeIndex === 0 ? 'GIA HÂN ♥' : 'YÊU EM NHIỀU ♥',
+        'BÉ GIA HÂN • 17/03/2011'
+      );
+
+      const heading = document.getElementById('main-sky-heading');
+      const btnLabel = document.getElementById('spell-btn-label');
+
+      if (isSpellingName) {
+        const currentPhrase = textShapeIndex === 0 ? 'GIA HÂN ♥' : 'YÊU EM NHIỀU ♥';
+        if (heading) heading.textContent = `Bầu Trời 3D Mang Tên ${currentPhrase}`;
+        if (btnLabel) btnLabel.textContent = `Đổi Chữ Sao (${currentPhrase})`;
+        showToast(`✨ Bầu trời sao hiện chữ: ${currentPhrase}`);
+        playMagicChord();
+      } else {
+        if (heading) heading.textContent = 'Quả Cầu Kỷ Niệm 3D Của Bé Gia Hân ✨';
+        if (btnLabel) btnLabel.textContent = 'Ghép Chữ: GIA HÂN ♥';
+        showToast('🌐 Đã quay lại Quả Cầu Kỷ Niệm 3D 360°');
+      }
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    initCelestialSphere3D();
+    resizeCanvas();
+
+    // --- Spawn Shooting Star, Lanterns, Fireworks ---
+    function spawnMeteor() {
+      const startX = Math.random() * width * 0.9 + width * 0.08;
+      const startY = Math.random() * height * 0.38;
+      meteors.push({
+        x: startX,
+        y: startY,
+        vx: -(Math.random() * 8 + 9),
+        vy: Math.random() * 5 + 4.2,
+        len: Math.random() * 140 + 95,
+        alpha: 1
+      });
+    }
+
+    function triggerMeteorShower(count = 14) {
+      playMagicChord();
+      for (let i = 0; i < count; i++) {
+        setTimeout(spawnMeteor, i * 110);
+      }
+    }
+
+    function spawnLantern(customX) {
+      const lx = typeof customX === 'number' ? customX : Math.random() * (width * 0.8) + width * 0.1;
+      lanterns.push({
+        x: lx,
+        y: height + 30,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: -(Math.random() * 0.65 + 0.55),
+        scale: Math.random() * 0.4 + 0.65,
+        swayPhase: Math.random() * Math.PI * 2,
+        text: lanternWishes[Math.floor(Math.random() * lanternWishes.length)]
+      });
+    }
+
+    function releaseLanternBatch(count = 6) {
+      playMagicChord();
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => spawnLantern(), i * 220);
+      }
+    }
+
+    function spawnHeartFirework(cx, cy) {
+      const x = cx || (width * 0.25 + Math.random() * width * 0.5);
+      const y = cy || (height * 0.22 + Math.random() * height * 0.32);
+      const colors = ['#f472b6', '#fb7185', '#fde047', '#38bdf8', '#ffffff', '#e879f9'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      shockwaves.push({ x, y, r: 4, alpha: 0.9, color });
+      playFireworkSound();
+
+      const count = 56;
+      for (let i = 0; i < count; i++) {
+        const t = (i / count) * Math.PI * 2;
+        const hx = 16 * Math.pow(Math.sin(t), 3);
+        const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+        const speed = 0.17 + Math.random() * 0.05;
+        fireworks.push({
+          x,
+          y,
+          vx: hx * speed,
+          vy: hy * speed,
+          alpha: 1,
+          size: Math.random() * 2.2 + 1.2,
+          color
+        });
+      }
+    }
+
+    function triggerHeartFireworksShow() {
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => {
+          spawnHeartFirework(
+            width * (0.2 + Math.random() * 0.6),
+            height * (0.18 + Math.random() * 0.32)
+          );
+        }, i * 320);
+      }
+    }
+
+    // Fast hardware-accelerated sprite draw: 0 gradient allocations!
+    function drawRealisticBrightStar(x, y, radius, colorStr, spikeLength) {
+      const sprite = (colorStr === '#fbcfe8' || colorStr.includes('244')) ? starSpritePink : starSpriteYellow;
+      const size = radius * 7;
+      if (sprite) {
+        ctx.drawImage(sprite, x - size / 2, y - size / 2, size, size);
+      }
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(x, y, Math.max(1, radius * 0.7), 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // --- MAIN RENDER LOOP (HARDWARE-ACCELERATED & 60FPS OPTIMIZED) ---
+    let animTime = 0;
+    let lastFrameTime = performance.now();
+
+    function renderSky(now) {
+      const dt = Math.min(0.05, (now - lastFrameTime) * 0.001 || 0.016);
+      lastFrameTime = now;
+      animTime += dt * 1.25;
+
+      if (!isDraggingSky) {
+        if (skyMode === 'spelling' || isSpellingName) {
+          // TEXT / SPELLING MODE:
+          // Keep the text facing directly towards the viewer!
+          // Gently breathe/float with subtle 3D parallax (±4 degrees), so text is NEVER rotated sideways or backwards!
+          const targetYaw = Math.sin(animTime * 0.6) * 0.06;
+          const targetPitch = Math.cos(animTime * 0.4) * 0.03;
+          camYaw += (targetYaw - camYaw) * 0.08;
+          camPitch += (targetPitch - camPitch) * 0.08;
+        } else if (autoRotate) {
+          // SPHERE 3D & GALAXY MODE:
+          // Smooth 360° rotation around the sphere of photos!
+          camYaw += 0.0035;
+        } else {
+          camYaw += velYaw;
+          camPitch += velPitch;
+          velYaw *= 0.94;
+          velPitch *= 0.94;
+        }
+      }
+      camPitch = Math.max(-1.35, Math.min(1.35, camPitch));
+      camZoom += (targetZoom - camZoom) * 0.1;
+
+      // 1. PITCH-BLACK NIGHT SKY
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, width, height);
+
+      // 2. 3D Milky Way Starlight Dust (Using pre-rendered GPU sprites - 0 gradient allocs!)
+      for (let i = 0; i < nebula3D.length; i++) {
+        const neb = nebula3D[i];
+        const p = project3D(neb.x, neb.y, neb.z, false);
+        if (!p.visible) continue;
+        const r = neb.radius * p.scale;
+        if (p.sx + r < 0 || p.sx - r > width || p.sy + r < 0 || p.sy - r > height) continue;
+
+        const sprite = neb.isPink ? nebulaSpritePink : nebulaSpriteBlue;
+        if (sprite) {
+          ctx.globalAlpha = neb.alpha * 1.5;
+          ctx.drawImage(sprite, p.sx - r, p.sy - r, r * 2, r * 2);
+        }
+      }
+      ctx.globalAlpha = 1;
+
+      // 3. Batch Draw Background Stars (Batched single-path drawing - 10x faster!)
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      const majorStarsToDraw = [];
+
+      for (let i = 0; i < sphereStars.length; i++) {
+        const s = sphereStars[i];
+        if (warpMode) {
+          s.z -= 16;
+          if (s.z < -650) s.z = 650;
+        }
+
+        const p = project3D(s.x, s.y, s.z, false);
+        if (!p.visible) continue;
+
+        if (p.sx >= -10 && p.sx <= width + 10 && p.sy >= -10 && p.sy <= height + 10) {
+          const r = Math.max(0.5, s.size * p.scale * 0.8);
+          if (s.isMajorStar && r > 1.2 && !warpMode) {
+            majorStarsToDraw.push({ sx: p.sx, sy: p.sy, r, s });
+          } else {
+            ctx.moveTo(p.sx + r, p.sy);
+            ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+          }
+        }
+      }
+      ctx.fill();
+
+      // Draw few major bright stars using cached sprites
+      for (let i = 0; i < majorStarsToDraw.length; i++) {
+        const m = majorStarsToDraw[i];
+        const colorStr = m.s.isPink ? '#fbcfe8' : '#fef08a';
+        drawRealisticBrightStar(m.sx, m.sy, m.r, colorStr, m.r * 3.5);
+      }
+
+      // 4. Floating Sky Lanterns
+      for (let i = lanterns.length - 1; i >= 0; i--) {
+        const l = lanterns[i];
+        l.y += l.vy;
+        l.x += l.vx + Math.sin(animTime * 1.4 + l.swayPhase) * 0.35;
+
+        if (l.y < -60) {
+          lanterns.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.translate(l.x, l.y);
+        ctx.scale(l.scale, l.scale);
+
+        if (lanternGlowSprite) {
+          ctx.drawImage(lanternGlowSprite, -34, -34, 68, 68);
+        }
+
+        ctx.fillStyle = '#fb923c';
+        ctx.beginPath();
+        ctx.roundRect(-10, -14, 20, 24, [8, 8, 3, 3]);
+        ctx.fill();
+
+        ctx.fillStyle = '#fef08a';
+        ctx.beginPath();
+        ctx.arc(0, 4, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.fillStyle = 'rgba(254, 240, 138, 0.95)';
+        ctx.textAlign = 'center';
+        ctx.fillText(l.text, 0, 22);
+        ctx.restore();
+      }
+
+      // 5. 3D Morphing Star-Particles
+      const beatScale = 1 + 0.075 * Math.sin(animTime * 4.2);
+
+      // Batched morph particles: 3 clean color passes (Pink, Gold, Blue)
+      ctx.fillStyle = '#f472b6';
+      ctx.beginPath();
+      const goldParticles = [];
+      const blueParticles = [];
+
+      for (let i = 0; i < morphParticles.length; i++) {
+        const p = morphParticles[i];
+        if (!p) continue;
+        let destX, destY, destZ;
+        if (skyMode === 'galaxy3d') {
+          const pulse = p.isRing ? 1 : beatScale;
+          destX = p.hx3d * pulse;
+          destY = p.hy3d * pulse;
+          destZ = p.hz3d * pulse;
+        } else if (skyMode === 'spelling' || isSpellingName) {
+          destX = p.tx3d;
+          destY = p.ty3d;
+          destZ = p.tz3d;
+        } else {
+          destX = p.hx3d * 0.55 * beatScale;
+          destY = p.hy3d * 0.55 * beatScale;
+          destZ = p.hz3d * 0.55 * beatScale;
+        }
+
+        p.x3d += (destX - p.x3d) * 0.12;
+        p.y3d += (destY - p.y3d) * 0.12;
+        p.z3d += (destZ - p.z3d) * 0.12;
+
+        const proj = project3D(p.x3d, p.y3d, p.z3d, true);
+        if (!proj.visible) continue;
+        const rad = Math.max(0.8, p.size * proj.scale);
+
+        if (p.color === '#f472b6' || p.color.includes('244')) {
+          ctx.moveTo(proj.sx + rad, proj.sy);
+          ctx.arc(proj.sx, proj.sy, rad, 0, Math.PI * 2);
+        } else if (p.color === '#fde047' || p.color.includes('253') || p.color.includes('fef')) {
+          goldParticles.push({ sx: proj.sx, sy: proj.sy, rad });
+        } else {
+          blueParticles.push({ sx: proj.sx, sy: proj.sy, rad });
+        }
+      }
+      ctx.fill();
+
+      // Pass 2: Warm Starlight Gold (Line 2)
+      if (goldParticles.length > 0) {
+        ctx.fillStyle = '#fde047';
+        ctx.beginPath();
+        for (let i = 0; i < goldParticles.length; i++) {
+          const gp = goldParticles[i];
+          ctx.moveTo(gp.sx + gp.rad, gp.sy);
+          ctx.arc(gp.sx, gp.sy, gp.rad, 0, Math.PI * 2);
+        }
+        ctx.fill();
+      }
+
+      // Pass 3: Soft Starlight Blue (Ring & Accents)
+      if (blueParticles.length > 0) {
+        ctx.fillStyle = '#bae6fd';
+        ctx.beginPath();
+        for (let i = 0; i < blueParticles.length; i++) {
+          const bp = blueParticles[i];
+          ctx.moveTo(bp.sx + bp.rad, bp.sy);
+          ctx.arc(bp.sx, bp.sy, bp.rad, 0, Math.PI * 2);
+        }
+        ctx.fill();
+      }
+
+      // 6. 3D Photo & Memory Sphere Cards (Depth sorted, 25 photos of Gia Hân)
+      if (skyMode === 'sphere3d') {
+        const projectedCards = [];
+        for (const node of sphereCardNodes) {
+          const targetX = isSphereExploded ? node.explodeX : node.sphereX;
+          const targetY = isSphereExploded ? node.explodeY + Math.sin(animTime * 1.8 + node.index) * 14 : node.sphereY;
+          const targetZ = isSphereExploded ? node.explodeZ : node.sphereZ;
+
+          node.x += (targetX - node.x) * 0.08;
+          node.y += (targetY - node.y) * 0.08;
+          node.z += (targetZ - node.z) * 0.08;
+
+          const proj = project3D(node.x, node.y, node.z, true);
+          node.visible = proj.visible;
+          if (proj.visible) {
+            const cardW = 68 * proj.scale;
+            const cardH = 83 * proj.scale;
+            node.screenX = proj.sx;
+            node.screenY = proj.sy;
+            node.screenW = cardW;
+            node.screenH = cardH;
+            projectedCards.push({ node, z2: proj.z2, scale: proj.scale });
+          }
+        }
+
+        projectedCards.sort((a, b) => b.z2 - a.z2);
+
+        for (const item of projectedCards) {
+          const { node, z2 } = item;
+          const tex = cardTextures[node.index];
+          if (!tex) continue;
+
+          ctx.save();
+          const depthAlpha = Math.max(0.28, Math.min(1, 1 - (z2 / 440)));
+          ctx.globalAlpha = depthAlpha;
+          ctx.drawImage(
+            tex,
+            node.screenX - node.screenW / 2,
+            node.screenY - node.screenH / 2,
+            node.screenW,
+            node.screenH
+          );
+          ctx.restore();
+        }
+      }
+
+      // Saturn Ring in Galaxy 3D mode
+      if (skyMode === 'galaxy3d') {
+        const orbitR = 250;
+        ctx.save();
+        ctx.textAlign = 'center';
+        ringPhrases.forEach((phrase, i) => {
+          const ang = animTime * 0.45 + (i / ringPhrases.length) * Math.PI * 2;
+          const ox = Math.cos(ang) * orbitR;
+          const oz = Math.sin(ang) * orbitR;
+          const oy = ox * 0.24;
+
+          const proj = project3D(ox, oy, oz, true);
+          if (!proj.visible) return;
+
+          const fontSize = Math.max(10, Math.round(13 * proj.scale));
+          ctx.font = `bold ${fontSize}px Inter, sans-serif`;
+          ctx.globalAlpha = proj.z2 < 0 ? 0.95 : 0.45;
+          ctx.fillStyle = i % 2 === 0 ? '#fbcfe8' : '#fde047';
+          ctx.fillText(phrase, proj.sx, proj.sy);
+        });
+        ctx.restore();
+      }
+
+      // 7. 3D Constellation Lines & 7 Main Stars
+      projectedMainStars = mainStarsData.map(s => project3D(s.x3d, s.y3d, s.z3d, true));
+
+      // High-performance double-stroke glow: 0 shadowBlur cost!
+      ctx.save();
+      ctx.beginPath();
+      for (let i = 0; i < mainStarsData.length - 1; i++) {
+        if (unlockedStars.has(i) && unlockedStars.has(i + 1)) {
+          const p1 = projectedMainStars[i];
+          const p2 = projectedMainStars[i + 1];
+          if (p1.visible && p2.visible) {
+            ctx.moveTo(p1.sx, p1.sy);
+            ctx.lineTo(p2.sx, p2.sy);
+          }
+        }
+      }
+      // Pass 1: Soft ambient glow
+      ctx.lineWidth = 4.5;
+      ctx.strokeStyle = 'rgba(244, 114, 182, 0.28)';
+      ctx.stroke();
+      // Pass 2: Bright core line
+      ctx.lineWidth = 1.8;
+      ctx.strokeStyle = 'rgba(244, 114, 182, 0.95)';
+      ctx.stroke();
+      ctx.restore();
+
+      mainStarsData.forEach((star, idx) => {
+        const pos = projectedMainStars[idx];
+        if (!pos.visible) return;
+        const isUnlocked = unlockedStars.has(idx);
+        const pulse = 1 + 0.2 * Math.sin(animTime * 2.8 + idx);
+        const radius = (isUnlocked ? 9 : 6.5) * pulse * pos.scale;
+
+        const sprite = isUnlocked ? starSpritePink : starSpriteYellow;
+        if (sprite) {
+          const sSize = radius * 6.5;
+          ctx.drawImage(sprite, pos.sx - sSize / 2, pos.sy - sSize / 2, sSize, sSize);
+        }
+
+        drawRealisticBrightStar(
+          pos.sx,
+          pos.sy,
+          (isUnlocked ? 4.5 : 3.5) * pos.scale,
+          isUnlocked ? '#fbcfe8' : '#fef08a',
+          (isUnlocked ? 18 : 13) * pulse * pos.scale
+        );
+
+        ctx.font = 'bold 11px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = isUnlocked ? '#fbcfe8' : 'rgba(254, 240, 138, 0.85)';
+        ctx.fillText(isUnlocked ? `${star.letter} ★` : `Sao #${idx + 1}`, pos.sx, pos.sy - 15 * pos.scale);
+      });
+
+      // 8. Shockwaves (0 save/restore in loop)
+      ctx.lineWidth = 1.8;
+      for (let i = shockwaves.length - 1; i >= 0; i--) {
+        const sw = shockwaves[i];
+        sw.r += 3.2;
+        sw.alpha -= 0.024;
+        if (sw.alpha <= 0) {
+          shockwaves.splice(i, 1);
+          continue;
+        }
+        ctx.strokeStyle = sw.color;
+        ctx.globalAlpha = sw.alpha;
+        ctx.beginPath();
+        ctx.arc(sw.x, sw.y, sw.r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      // Fireworks (Batched rendering - saves 400+ save/restore stack pushes per frame!)
+      for (let i = fireworks.length - 1; i >= 0; i--) {
+        const fw = fireworks[i];
+        fw.x += fw.vx;
+        fw.y += fw.vy;
+        fw.vy += 0.024;
+        fw.vx *= 0.985;
+        fw.vy *= 0.985;
+        fw.alpha -= 0.016;
+        if (fw.alpha <= 0) {
+          fireworks.splice(i, 1);
+          continue;
+        }
+        ctx.globalAlpha = fw.alpha;
+        ctx.fillStyle = fw.color;
+        ctx.beginPath();
+        ctx.arc(fw.x, fw.y, fw.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // 9. Shooting Stars (Lightweight stroke without gradient allocation!)
+      ctx.lineWidth = 2.0;
+      for (let i = meteors.length - 1; i >= 0; i--) {
+        const m = meteors[i];
+        m.x += m.vx;
+        m.y += m.vy;
+        m.alpha -= 0.016;
+
+        if (m.alpha <= 0) {
+          meteors.splice(i, 1);
+          continue;
+        }
+
+        const tailX = m.x - m.vx * (m.len / 10);
+        const tailY = m.y - m.vy * (m.len / 10);
+
+        ctx.strokeStyle = `rgba(255, 255, 255, ${m.alpha})`;
+        ctx.beginPath();
+        ctx.moveTo(m.x, m.y);
+        ctx.lineTo(tailX, tailY);
+        ctx.stroke();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, 2.0, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // 10. Cursor Stardust Trail (0 save/restore in loop)
+      for (let i = cursorDust.length - 1; i >= 0; i--) {
+        const d = cursorDust[i];
+        d.x += d.vx;
+        d.y += d.vy;
+        d.alpha -= 0.035;
+        if (d.alpha <= 0) {
+          cursorDust.splice(i, 1);
+          continue;
+        }
+        ctx.globalAlpha = d.alpha;
+        ctx.fillStyle = d.color;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      requestAnimationFrame(renderSky);
+    }
+    requestAnimationFrame(renderSky);
+
+    // Periodic shooting stars & sky lanterns
+    setInterval(() => {
+      if (Math.random() < 0.8) spawnMeteor();
+      if (Math.random() < 0.35 && lanterns.length < 8) spawnLantern();
+    }, 2400);
+
+    // Modal Helpers
+    // === Dynamic Island Controller (iPhone 15 Pro) ===
+    let diState = 'compact'; // 'compact', 'controls', 'card'
+    let diAutoCollapseTimer = null;
+
+    function expandDynamicIslandToControls() {
+      const di = document.getElementById('dynamic-island');
+      const controlsView = document.getElementById('di-expanded-controls');
+      const cardView = document.getElementById('di-expanded-card');
+      if (!di) return;
+
+      diState = 'controls';
+      cardView.classList.add('hidden');
+      cardView.classList.remove('flex');
+      controlsView.classList.remove('hidden');
+      controlsView.classList.add('flex');
+      di.classList.add('is-expanded');
+
+      // Sync expanded caption
+      const captionText = document.getElementById('story-caption-text');
+      const expCaption = document.getElementById('di-expanded-caption');
+      if (captionText && expCaption) expCaption.textContent = captionText.textContent;
+
+      if (window.lucide) lucide.createIcons();
+
+      if (diAutoCollapseTimer) clearTimeout(diAutoCollapseTimer);
+      diAutoCollapseTimer = setTimeout(() => {
+        collapseDynamicIsland();
+      }, 12000);
+    }
+
+    function collapseDynamicIsland() {
+      const di = document.getElementById('dynamic-island');
+      const controlsView = document.getElementById('di-expanded-controls');
+      const cardView = document.getElementById('di-expanded-card');
+      if (!di) return;
+
+      diState = 'compact';
+      di.classList.remove('is-expanded');
+      setTimeout(() => {
+        if (diState === 'compact') {
+          controlsView.classList.add('hidden');
+          controlsView.classList.remove('flex');
+          cardView.classList.add('hidden');
+          cardView.classList.remove('flex');
+        }
+      }, 350);
+
+      if (diAutoCollapseTimer) clearTimeout(diAutoCollapseTimer);
+    }
+
+    function onDynamicIslandMainClick(e) {
+      // If clicking inside a button, do nothing (button handles it)
+      if (e.target.closest('button') || e.target.closest('input')) return;
+
+      if (diState === 'compact') {
+        expandDynamicIslandToControls();
+        playStarChime(1, 0.3);
+      } else {
+        collapseDynamicIsland();
+      }
+    }
+
+    function hideDynamicIsland() {
+      collapseDynamicIsland();
+    }
+
+    function openSphereCardModal(cardIndex) {
+      const card = sphereCardsData[cardIndex % sphereCardsData.length];
+      activeCardOrStarIndex = cardIndex;
+      playStarChime(cardIndex, 0.65);
+
+      const di = document.getElementById('dynamic-island');
+      const controlsView = document.getElementById('di-expanded-controls');
+      const cardView = document.getElementById('di-expanded-card');
+
+      document.getElementById('card-star-badge').textContent = card.emoji;
+      document.getElementById('card-star-subtitle').textContent = `Thẻ Kỷ Niệm #${cardIndex + 1} • ${card.sub}`;
+      document.getElementById('card-star-title').textContent = card.title;
+      document.getElementById('card-star-body').textContent = card.msg;
+
+      const photoContainer = document.getElementById('card-photo-container');
+      const photoImg = document.getElementById('card-photo-img');
+      const loaded = loadedImages[cardIndex % loadedImages.length];
+
+      if (loaded && loaded.src) {
+        photoImg.src = loaded.src;
+        photoContainer.classList.remove('hidden');
+        photoContainer.classList.add('flex');
+      } else {
+        const file = giaHanPhotoFiles[cardIndex % giaHanPhotoFiles.length];
+        photoImg.src = `./images/${file}`;
+        photoContainer.classList.remove('hidden');
+        photoContainer.classList.add('flex');
+      }
+
+      diState = 'card';
+      controlsView.classList.add('hidden');
+      controlsView.classList.remove('flex');
+      cardView.classList.remove('hidden');
+      cardView.classList.add('flex');
+      di.classList.add('is-expanded');
+
+      if (window.lucide) lucide.createIcons();
+
+      if (diAutoCollapseTimer) clearTimeout(diAutoCollapseTimer);
+      diAutoCollapseTimer = setTimeout(() => {
+        collapseDynamicIsland();
+      }, 8000);
+    }
+
+    function selectConstellationStar(index) {
+      const star = mainStarsData[index];
+      if (!star) return;
+
+      activeCardOrStarIndex = index;
+      unlockedStars.add(index);
+      playStarChime(index);
+
+      const pos = projectedMainStars[index];
+      if (pos && pos.visible) {
+        spawnHeartFirework(pos.sx, pos.sy);
+      }
+
+      document.getElementById('star-progress').textContent = `Đã thắp sáng: ${unlockedStars.size}/7 sao`;
+
+      const di = document.getElementById('dynamic-island');
+      const controlsView = document.getElementById('di-expanded-controls');
+      const cardView = document.getElementById('di-expanded-card');
+
+      document.getElementById('card-star-badge').textContent = star.letter;
+      document.getElementById('card-star-subtitle').textContent = star.subtitle;
+      document.getElementById('card-star-title').textContent = star.name;
+      document.getElementById('card-star-body').textContent = star.msg;
+
+      const photoContainer = document.getElementById('card-photo-container');
+      photoContainer.classList.add('hidden');
+      photoContainer.classList.remove('flex');
+
+      diState = 'card';
+      controlsView.classList.add('hidden');
+      controlsView.classList.remove('flex');
+      cardView.classList.remove('hidden');
+      cardView.classList.add('flex');
+      di.classList.add('is-expanded');
+
+      if (window.lucide) lucide.createIcons();
+
+      if (diAutoCollapseTimer) clearTimeout(diAutoCollapseTimer);
+      diAutoCollapseTimer = setTimeout(() => {
+        collapseDynamicIsland();
+      }, 7000);
+    }
+
+    // === AUTO-SHOW DIRECTOR & CONTROLLERS ===
+    let autoShowActive = true;
+    let autoShowTimeouts = [];
+    let currentAutoScene = 0;
+
+    function clearAutoShow() {
+      autoShowTimeouts.forEach(t => clearTimeout(t));
+      autoShowTimeouts = [];
+      const wave = document.getElementById('di-soundwave');
+      if (wave) wave.classList.add('paused');
+    }
+
+    function scheduleAuto(fn, delayMs) {
+      const tid = setTimeout(() => {
+        if (autoShowActive) fn();
+      }, delayMs);
+      autoShowTimeouts.push(tid);
+      return tid;
+    }
+
+    function runMasterAutoShow() {
+      clearAutoShow();
+      autoShowActive = true;
+      const wave = document.getElementById('di-soundwave');
+      if (wave) wave.classList.remove('paused');
+      document.getElementById('auto-play-text').textContent = 'Đang Chiếu';
+      document.getElementById('auto-play-icon').setAttribute('data-lucide', 'pause');
+      lucide.createIcons();
+
+      // ACT 1: Particle Countdown & Romantic Intro (0s - 12s)
+      currentAutoScene = 1;
+      skyMode = 'spelling';
+      isSpellingName = true;
+      camYaw = 0;
+      camPitch = 0;
+
+      const countdownSteps = [
+        { l1: '3', l2: 'CHUẨN BỊ NHÉ BÉ YÊU ✨', caption: '✨ 3... 2... 1... Món quà bất ngờ dành riêng cho Bé Gia Hân!', heading: '3 — Chuẩn Bị Nhé Bé Yêu ✨', delay: 0 },
+        { l1: '2', l2: 'MÓN QUÀ TỪ ANH 💖', caption: '💖 Món quà vũ trụ 3D lưu giữ từng khoảnh khắc ngọt ngào của em...', heading: '2 — Món Quà Từ Anh 💖', delay: 1400 },
+        { l1: '1', l2: 'DÀNH RIÊNG CHO BÉ 🌸', caption: '🌸 Dành tặng cô công chúa Song Ngư xinh đẹp nhất đời anh...', heading: '1 — Dành Riêng Cho Gia Hân 🌸', delay: 2800 },
+        { l1: 'BÉ GIA HÂN', l2: '17/03/2011 👑', caption: '👑 Chào Bé Gia Hân sinh ngày 17/03/2011 của anh!', heading: 'Chào Bé Gia Hân — Công Chúa Bé Yêu • 17/03/2011', delay: 4200 },
+        { l1: 'YÊU EM NHIỀU ♥', l2: 'MÃI BÊN BÉ 💕', caption: '💕 Giữa ngân hà bao la, anh chỉ muốn dành trọn sự dịu dàng này cho em!', heading: 'Anh Yêu Bé Yêu ♥ — Mãi Bên Nhau Nhé 💕', delay: 6800 }
+      ];
+
+      countdownSteps.forEach((st, i) => {
+        scheduleAuto(() => {
+          playStarChime(i + 2, 0.75);
+          buildMorphParticles3D(st.l1, st.l2);
+          document.getElementById('main-sky-heading').textContent = st.heading;
+          updateStoryCaption(st.caption);
+        }, st.delay);
+      });
+
+      // ACT 2: 3D Photo Sphere Formation & 360° Slow Orbit (9.5s - 22s)
+      scheduleAuto(() => {
+        currentAutoScene = 2;
+        skyMode = 'sphere3d';
+        isSpellingName = false;
+        isSphereExploded = false;
+        playMagicChord();
+        triggerMeteorShower(12);
+        document.getElementById('main-sky-heading').textContent = 'Quả Cầu Kỷ Niệm 3D Của Bé Gia Hân ✨';
+        updateStoryCaption('🌐 Quả Cầu Kỷ Niệm 3D xoay 360° lưu giữ từng lời yêu thương gửi tới bé...');
+      }, 9500);
+
+      // ACT 3: Light Up the 7 Constellation Stars (22s - 39s)
+      const starCaptions = [
+        'G • Ngày 17/03/2011 thiên thần nhỏ Gia Hân chào đời 🌸',
+        'I • Cô bé Song Ngư dịu dàng, ấm áp và luôn ngọt ngào ♓',
+        'A • Biệt danh bé đáng yêu nhất trần đời 🎀',
+        'H • Nụ cười tỏa nắng làm bừng sáng cả bầu trời đêm ☀️',
+        'Â • Anh hứa sẽ luôn chở che và chiều chuộng em hết mực 🧋',
+        'N • Chúc công chúa của anh luôn hạnh phúc, bình an và rạng ngời 🍀',
+        '♥ • 7 vì sao đã nối trọn vẹn trái tim vĩnh cửu anh dành cho em 💖'
+      ];
+
+      mainStarsData.forEach((st, idx) => {
+        scheduleAuto(() => {
+          currentAutoScene = 3;
+          selectConstellationStar(idx);
+          updateStoryCaption(starCaptions[idx]);
+          document.getElementById('main-sky-heading').textContent = `Thắp Sáng Ngôi Sao: ${st.letter} ★`;
+        }, 22000 + idx * 2300);
+      });
+
+      // ACT 4: 3D Giant Word Sculptures in Space (39s - 52s)
+      scheduleAuto(() => {
+        currentAutoScene = 4;
+        hideDynamicIsland();
+        skyMode = 'spelling';
+        isSpellingName = true;
+        textShapeIndex = 0;
+        camYaw = 0;
+        camPitch = 0;
+        buildMorphParticles3D('GIA HÂN ♥', 'BÉ YÊU • 17/03/2011');
+        document.getElementById('main-sky-heading').textContent = 'Bầu Trời 3D Mang Tên GIA HÂN ♥';
+        updateStoryCaption('✨ Tên của Gia Hân được khắc sâu vào bầu trời đêm ngân hà 3D...');
+        playMagicChord();
+      }, 39000);
+
+      scheduleAuto(() => {
+        textShapeIndex = 1;
+        buildMorphParticles3D('YÊU EM NHIỀU ♥', 'MÃI BÊN BÉ • 17/03');
+        document.getElementById('main-sky-heading').textContent = 'Bầu Trời 3D Mang Tên YÊU EM NHIỀU ♥';
+        updateStoryCaption('💖 Dù ở góc độ nào, trái tim anh vẫn luôn hướng về Bé Gia Hân!');
+        playMagicChord();
+      }, 45500);
+
+      // ACT 5: Sky Lanterns & Heavy Meteor Shower (52s - 66s)
+      scheduleAuto(() => {
+        currentAutoScene = 5;
+        skyMode = 'sphere3d';
+        isSpellingName = false;
+        document.getElementById('main-sky-heading').textContent = 'Thả Đèn Trời Nguyện Ước Cho Bé Gia Hân 🏮';
+        updateStoryCaption('🏮 Hàng ngàn chiếc đèn trời mang điều ước bình an, may mắn bay về phía bé...');
+        releaseLanternBatch(8);
+        triggerMeteorShower(16);
+      }, 52000);
+
+      // ACT 6: Saturn Galaxy Heart 3D (66s - 80s)
+      scheduleAuto(() => {
+        currentAutoScene = 6;
+        skyMode = 'galaxy3d';
+        isSpellingName = false;
+        playMagicChord();
+        document.getElementById('main-sky-heading').textContent = 'Hành Tinh Trái Tim Bé Gia Hân 🪐💖';
+        updateStoryCaption('🪐 Trái tim vũ trụ 3D đang đập theo nhịp đập yêu thương hướng về em...');
+        triggerMeteorShower(10);
+      }, 66000);
+
+      // ACT 7: Exploded 3D Cards Galaxy (80s - 94s)
+      scheduleAuto(() => {
+        currentAutoScene = 7;
+        skyMode = 'sphere3d';
+        isSphereExploded = true;
+        playMagicChord();
+        triggerHeartFireworksShow();
+        document.getElementById('main-sky-heading').textContent = 'Không Gian Kỷ Niệm Bay Lơ Lửng 360° 💖';
+        updateStoryCaption('💥 Từng tấm thẻ kỷ niệm bung tỏa bay lơ lửng giữa các vì sao lấp lánh...');
+      }, 80000);
+
+      // ACT 8: Heart Fireworks Finale & Love Letter (94s - 110s)
+      scheduleAuto(() => {
+        currentAutoScene = 8;
+        isSphereExploded = false;
+        triggerHeartFireworksShow();
+        triggerMeteorShower(15);
+        releaseLanternBatch(6);
+        document.getElementById('main-sky-heading').textContent = 'Pháo Hoa Trái Tim Rực Rỡ Chúc Mừng Gia Hân 🎆';
+        updateStoryCaption('🎆 Pháo hoa trái tim rực sáng chúc công chúa bé mãi mãi xinh đẹp, hạnh phúc!');
+
+        // Open love letter smoothly
+        setTimeout(() => {
+          if (autoShowActive) {
+            const letterModal = document.getElementById('letter-modal');
+            letterModal.classList.remove('hidden');
+            letterModal.classList.add('flex');
+            updateStoryCaption('💌 Lá thư ánh sao chan chứa tình cảm gửi riêng cho Bé Gia Hân...');
+          }
+        }, 3200);
+
+        // Auto close letter after 12s so show continues into infinite ambient loop
+        setTimeout(() => {
+          const letterModal = document.getElementById('letter-modal');
+          if (letterModal.classList.contains('flex')) {
+            letterModal.classList.add('hidden');
+            letterModal.classList.remove('flex');
+          }
+        }, 16000);
+      }, 94000);
+
+      // ACT 9: Infinite Ambient Mode & Continuous Loop (115s+)
+      scheduleAuto(() => {
+        currentAutoScene = 9;
+        document.getElementById('main-sky-heading').textContent = 'Bầu Trời Sao Kỷ Niệm Của Bé Gia Hân ✨';
+        updateStoryCaption('✨ Chúc Bé Gia Hân luôn mỉm cười và hạnh phúc mỗi ngày nha em yêu! ♥');
+
+        // Loop periodic highlights
+        const ambientInterval = setInterval(() => {
+          if (!autoShowActive) {
+            clearInterval(ambientInterval);
+            return;
+          }
+          if (Math.random() < 0.5) {
+            triggerHeartFireworksShow();
+          } else {
+            triggerMeteorShower(10);
+            releaseLanternBatch(4);
+          }
+        }, 22000);
+      }, 115000);
+    }
+
+    function launchGiftExperience() {
+      tryLockLandscape();
+      ensureAudio();
+      playMagicChord();
+      startRomanticMusicLoop();
+      document.getElementById('intro-modal').classList.add('hidden');
+      runMasterAutoShow();
+    }
+
+    // --- Auto-play Director Controls ---
+    document.getElementById('auto-play-toggle-btn').addEventListener('click', () => {
+      autoShowActive = !autoShowActive;
+      const label = document.getElementById('auto-play-text');
+      const icon = document.getElementById('auto-play-icon');
+
+      if (autoShowActive) {
+        label.textContent = 'Đang Chiếu';
+        icon.setAttribute('data-lucide', 'pause');
+        showToast('▶ Tiếp tục tự động trình chiếu!');
+        runMasterAutoShow();
+      } else {
+        clearAutoShow();
+        label.textContent = 'Tạm Dừng';
+        icon.setAttribute('data-lucide', 'play');
+        showToast('⏸ Đã tạm dừng tự động chiếu — bạn có thể tự do kéo xoay 360°!');
+      }
+      lucide.createIcons();
+    });
+
+    document.getElementById('auto-play-skip-btn').addEventListener('click', () => {
+      clearAutoShow();
+      // Cycle through modes quickly
+      if (skyMode === 'sphere3d' && !isSphereExploded) {
+        skyMode = 'sphere3d';
+        isSphereExploded = true;
+        triggerHeartFireworksShow();
+        document.getElementById('main-sky-heading').textContent = 'Không Gian Kỷ Niệm Bay Lơ Lửng 360° 💖';
+        updateStoryCaption('💥 Tách các thẻ kỷ niệm bay lơ lửng 3D!');
+      } else if (isSphereExploded) {
+        isSphereExploded = false;
+        skyMode = 'galaxy3d';
+        triggerMeteorShower(12);
+        document.getElementById('main-sky-heading').textContent = 'Hành Tinh Trái Tim Bé Gia Hân 🪐💖';
+        updateStoryCaption('🪐 Trái tim vũ trụ 3D đang đập theo nhịp đập yêu thương!');
+      } else if (skyMode === 'galaxy3d') {
+        toggleSpellName(true);
+        updateStoryCaption('✨ Chữ sao 3D bừng sáng giữa vũ trụ!');
+      } else {
+        skyMode = 'sphere3d';
+        isSpellingName = false;
+        isSphereExploded = false;
+        triggerHeartFireworksShow();
+        releaseLanternBatch(6);
+        document.getElementById('main-sky-heading').textContent = 'Quả Cầu Kỷ Niệm 3D Của Bé Gia Hân ✨';
+        updateStoryCaption('🌐 Quả Cầu Kỷ Niệm 3D xoay 360°!');
+      }
+    });
+
+    // Toggle Manual Buttons Dock
+    const manualDock = document.getElementById('bottom-manual-dock');
+    document.getElementById('toggle-dock-btn').addEventListener('click', () => {
+      const isHidden = manualDock.classList.contains('hidden');
+      if (isHidden) {
+        manualDock.classList.remove('hidden');
+        setTimeout(() => {
+          manualDock.classList.remove('opacity-0', 'translate-y-4');
+        }, 10);
+        document.getElementById('toggle-dock-label').textContent = 'Đóng Nút';
+      } else {
+        manualDock.classList.add('opacity-0', 'translate-y-4');
+        setTimeout(() => {
+          manualDock.classList.add('hidden');
+        }, 300);
+        document.getElementById('toggle-dock-label').textContent = 'Bảng Nút';
+      }
+    });
+
+    // Fullscreen toggle
+    document.getElementById('fullscreen-btn').addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    // Camera buttons
+    document.getElementById('auto-rotate-btn').addEventListener('click', () => {
+      autoRotate = !autoRotate;
+      showToast(autoRotate ? '🔄 Đã bật tự động xoay 3D!' : '✋ Đã tắt tự xoay — hãy dùng tay kéo xoay 360°!');
+    });
+
+    document.getElementById('zoom-in-btn').addEventListener('click', () => {
+      targetZoom = Math.min(2.3, targetZoom + 0.25);
+      playStarChime(5);
+    });
+
+    document.getElementById('zoom-out-btn').addEventListener('click', () => {
+      targetZoom = Math.max(0.5, targetZoom - 0.25);
+      playStarChime(2);
+    });
+
+    document.getElementById('center-cam-btn').addEventListener('click', () => {
+      camYaw = 0;
+      camPitch = 0;
+      velYaw = 0;
+      velPitch = 0;
+      targetZoom = 1.0;
+      playStarChime(4);
+      showToast('🎯 Đã đưa góc nhìn 3D về chính diện!');
+    });
+
+    window.addEventListener('wheel', e => {
+      const delta = e.deltaY > 0 ? -0.12 : 0.12;
+      targetZoom = Math.max(0.45, Math.min(2.4, targetZoom + delta));
+    }, { passive: true });
+
+    // 360° Drag & Tap Interaction
+    canvas.addEventListener('pointerdown', e => {
+      ensureAudio();
+      isDraggingSky = true;
+      lastPointerX = e.clientX;
+      lastPointerY = e.clientY;
+      totalDragDist = 0;
+      if (userInactiveTimer) clearTimeout(userInactiveTimer);
+    });
+
+    window.addEventListener('pointermove', e => {
+      const dx = e.clientX - lastPointerX;
+      const dy = e.clientY - lastPointerY;
+      lastPointerX = e.clientX;
+      lastPointerY = e.clientY;
+
+      if (isDraggingSky) {
+        totalDragDist += Math.hypot(dx, dy);
+        velYaw = -dx * 0.0065;
+        velPitch = dy * 0.0065;
+        camYaw += velYaw;
+        camPitch += velPitch;
+      }
+
+      if (cursorDust.length < 95) {
+        const dustColors = ['#ffffff', '#fde047', '#bae6fd', '#fbcfe8'];
+        cursorDust.push({
+          x: e.clientX + (Math.random() - 0.5) * 8,
+          y: e.clientY + (Math.random() - 0.5) * 8,
+          vx: (Math.random() - 0.5) * 1.1,
+          vy: (Math.random() - 0.5) * 1.1 - 0.3,
+          size: Math.random() * 1.9 + 0.7,
+          alpha: 0.95,
+          color: dustColors[Math.floor(Math.random() * dustColors.length)]
+        });
+      }
+    });
+
+    window.addEventListener('pointerup', e => {
+      if (!isDraggingSky) return;
+      isDraggingSky = false;
+
+      // Resume auto rotation smoothly after 2.5s of inactivity
+      userInactiveTimer = setTimeout(() => {
+        autoRotate = true;
+      }, 2500);
+
+      if (totalDragDist < 10) {
+        const rect = canvas.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+
+        // Check 3D photo cards
+        if (skyMode === 'sphere3d') {
+          for (let i = sphereCardNodes.length - 1; i >= 0; i--) {
+            const node = sphereCardNodes[i];
+            if (node.visible) {
+              const halfW = node.screenW / 2;
+              const halfH = node.screenH / 2;
+              if (
+                clickX >= node.screenX - halfW &&
+                clickX <= node.screenX + halfW &&
+                clickY >= node.screenY - halfH &&
+                clickY <= node.screenY + halfH
+              ) {
+                openSphereCardModal(node.index);
+                spawnHeartFirework(clickX, clickY);
+                return;
+              }
+            }
+          }
+        }
+
+        // Check constellation stars
+        for (let i = 0; i < projectedMainStars.length; i++) {
+          const pos = projectedMainStars[i];
+          if (pos && pos.visible) {
+            const dist = Math.hypot(clickX - pos.sx, clickY - pos.sy);
+            if (dist < 38) {
+              selectConstellationStar(i);
+              return;
+            }
+          }
+        }
+
+        playStarChime(Math.floor(Math.random() * 6));
+        spawnHeartFirework(clickX, clickY);
+      }
+    });
+
+    
+    // === MOBILE ORIENTATION CHECK & AUTO-ROTATE HELPER ===
+    let userDismissedRotatePrompt = false;
+
+    function checkOrientation() {
+      const isMobile = ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || window.innerWidth < 850;
+      const isPortrait = window.innerHeight > window.innerWidth;
+      const overlay = document.getElementById('rotate-device-overlay');
+      if (!overlay) return;
+
+      if (isMobile && isPortrait && !userDismissedRotatePrompt) {
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+      } else {
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+      }
+    }
+
+    async function tryLockLandscape() {
+      // 1. Enter fullscreen if supported
+      if (!document.fullscreenElement) {
+        try {
+          if (document.documentElement.requestFullscreen) {
+            await document.documentElement.requestFullscreen();
+          } else if (document.documentElement.webkitRequestFullscreen) {
+            await document.documentElement.webkitRequestFullscreen();
+          }
+        } catch (e) {}
+      }
+      // 2. Try locking to landscape mode
+      try {
+        if (screen.orientation && screen.orientation.lock) {
+          await screen.orientation.lock('landscape');
+        }
+      } catch (e) {}
+    }
+
+    document.getElementById('lock-landscape-btn').addEventListener('click', async () => {
+      await tryLockLandscape();
+      userDismissedRotatePrompt = true;
+      checkOrientation();
+    });
+
+    document.getElementById('dismiss-rotate-btn').addEventListener('click', () => {
+      userDismissedRotatePrompt = true;
+      checkOrientation();
+    });
+
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('orientationchange', () => {
+      setTimeout(checkOrientation, 200);
+      setTimeout(resizeCanvas, 250);
+    });
+    setTimeout(checkOrientation, 500);
+
+    // UI Buttons
+
+    
+
+    // UI Buttons
+        document.getElementById('next-star-btn').addEventListener('click', () => {
+      if (skyMode === 'sphere3d') {
+        openSphereCardModal((activeCardOrStarIndex + 1) % sphereCardsData.length);
+      } else {
+        selectConstellationStar((activeCardOrStarIndex + 1) % mainStarsData.length);
+      }
+    });
+    document.getElementById('start-sky-btn').addEventListener('click', launchGiftExperience);
+
+
+    document.getElementById('intro-countdown-btn').addEventListener('click', () => {
+      runMasterAutoShow();
+    });
+
+    document.getElementById('connect-next-btn').addEventListener('click', () => {
+      for (let i = 0; i < mainStarsData.length; i++) {
+        if (!unlockedStars.has(i)) {
+          selectConstellationStar(i);
+          return;
+        }
+      }
+      selectConstellationStar((activeCardOrStarIndex + 1) % mainStarsData.length);
+    });
+
+    document.getElementById('spell-name-btn').addEventListener('click', () => {
+      mainStarsData.forEach((_, idx) => unlockedStars.add(idx));
+      document.getElementById('star-progress').textContent = `Đã thắp sáng: 7/7 sao`;
+      toggleSpellName();
+    });
+
+    document.getElementById('lantern-btn').addEventListener('click', () => {
+      releaseLanternBatch(6);
+      showToast('🏮 Đã thả đèn trời mang điều ước gửi đến Bé Gia Hân!');
+    });
+
+    document.getElementById('firework-btn').addEventListener('click', () => {
+      triggerHeartFireworksShow();
+      showToast('🎆 Pháo hoa trái tim rực sáng trên bầu trời đêm của bé!');
+    });
+
+    document.getElementById('meteor-shower-btn').addEventListener('click', () => {
+      triggerMeteorShower(14);
+      showToast('🌠 Mưa sao băng chúc Bé Gia Hân luôn hạnh phúc!');
+    });
+
+    document.getElementById('open-letter-btn').addEventListener('click', () => {
+      playStarChime(4);
+      const modal = document.getElementById('letter-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    });
+
+    document.getElementById('close-letter-btn').addEventListener('click', () => {
+      const modal = document.getElementById('letter-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+
+    document.getElementById('letter-wish-btn').addEventListener('click', () => {
+      const modal = document.getElementById('letter-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      triggerHeartFireworksShow();
+      triggerMeteorShower(15);
+      releaseLanternBatch(6);
+    });
+
+    document.getElementById('reset-sky-btn').addEventListener('click', () => {
+      unlockedStars.clear();
+      isSpellingName = false;
+      isSphereExploded = false;
+      warpMode = false;
+      skyMode = 'sphere3d';
+      camYaw = 0;
+      camPitch = 0;
+      targetZoom = 1.0;
+      document.getElementById('star-progress').textContent = 'Đã thắp sáng: 0/7 sao';
+      document.getElementById('main-sky-heading').textContent = 'Quả Cầu Kỷ Niệm 3D Của Bé Gia Hân ✨';
+      hideDynamicIsland();
+      playStarChime(0);
+      showToast('🔄 Đã đặt lại bầu trời sao!');
+    });
+
+    document.getElementById('audio-toggle-btn').addEventListener('click', () => {
+      soundOn = !soundOn;
+      const label = document.getElementById('audio-label');
+      const icon = document.getElementById('audio-icon');
+      if (label) label.textContent = soundOn ? 'Nhạc: Bật' : 'Nhạc: Tắt';
+      if (icon) {
+        icon.setAttribute('data-lucide', soundOn ? 'volume-2' : 'volume-x');
+        lucide.createIcons();
+      }
+      if (soundOn) {
+        ensureAudio();
+        playStarChime(2);
+      }
+    });
+
+    // Hotkey 'H' to toggle manual buttons dock
+    window.addEventListener('keydown', e => {
+      if (e.key === 'h' || e.key === 'H') {
+        document.getElementById('toggle-dock-btn').click();
+      }
+    });
+  </script>
+</body>
+</html>
